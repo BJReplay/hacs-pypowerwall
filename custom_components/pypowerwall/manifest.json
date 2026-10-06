@@ -2,14 +2,14 @@
   "domain": "pypowerwall",
   "name": "Tesla Powerwall (pypowerwall)",
   "codeowners": [
-    "@jackrayner"
+    "@BJReplay"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/jackrayner/hacs-pypowerwall",
+  "documentation": "https://github.com/BJReplay/hacs-pypowerwall",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/jackrayner/hacs-pypowerwall/issues",
+  "issue_tracker": "https://github.com/BJReplay/hacs-pypowerwall/issues",
   "requirements": [
-    "pypowerwall==0.17.3"
+    "pypowerwall==0.18.2"
   ],
   "version": "0.8.0"
 }
