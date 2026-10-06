@@ -4,6 +4,7 @@ DOMAIN = "pypowerwall"
 
 CONF_CONN_TYPE = "conn_type"
 CONF_GW_PWD = "gw_pwd"
+CONF_PW_PASSWORD = "password"
 CONF_AUTHPATH = "authpath"
 CONF_SITEID = "siteid"
 CONF_RSA_KEY_PATH = "rsa_key_path"
@@ -17,13 +18,20 @@ CONN_TYPE_HYBRID = "hybrid"
 CONN_TYPE_TEDAPI_V1R = "tedapi_v1r"
 CONN_TYPE_CLOUD = "cloud"
 CONN_TYPE_FLEETAPI = "fleetapi"
+CONN_TYPE_TEDAPI_V1R = "tedapi_v1r"
+CONN_TYPE_TEDAPI_V1R_PW2 = "tedapi_v1r_pw2"
 
 # Cloud and FleetAPI modes authenticate via a pre-existing token/config cache file
 # (produced by `python -m pypowerwall setup` / `python -m pypowerwall.fleetapi setup`
 # respectively) rather than credentials a form can collect directly; v1r LAN mode
 # similarly needs a pre-registered RSA key file. These three all take a filesystem
 # path rather than inline credentials.
-FILE_BASED_CONN_TYPES = (CONN_TYPE_CLOUD, CONN_TYPE_FLEETAPI, CONN_TYPE_TEDAPI_V1R)
+FILE_BASED_CONN_TYPES = (
+    CONN_TYPE_CLOUD,
+    CONN_TYPE_FLEETAPI,
+    CONN_TYPE_TEDAPI_V1R,
+    CONN_TYPE_TEDAPI_V1R_PW2,
+)
 
 # set_grid_charging()/get_grid_charging() and set_grid_export()/get_grid_export() require
 # Cloud or FleetAPI mode per pypowerwall's own docstrings -- its local/TEDAPI/hybrid
@@ -32,10 +40,10 @@ FILE_BASED_CONN_TYPES = (CONN_TYPE_CLOUD, CONN_TYPE_FLEETAPI, CONN_TYPE_TEDAPI_V
 GRID_CONTROL_CONN_TYPES = (CONN_TYPE_CLOUD, CONN_TYPE_FLEETAPI)
 
 # go_off_grid()/reconnect_grid() are facade methods on pypowerwall.Powerwall that, as of
-# 0.17.3, are only actually implemented by the TEDAPI backend's signed v1r transport
+# 0.18.2, are only actually implemented by the TEDAPI backend's signed v1r transport
 # (send_island_mode()) -- local/TEDAPI (non-v1r)/hybrid/cloud/FleetAPI backends still
 # no-op. Used to gate the go_off_grid/reconnect_grid buttons in button.py.
-GRID_ISLANDING_CONN_TYPES = (CONN_TYPE_TEDAPI_V1R,)
+GRID_ISLANDING_CONN_TYPES = (CONN_TYPE_TEDAPI_V1R, CONN_TYPE_TEDAPI_V1R_PW2)
 
 DEFAULT_SCAN_INTERVAL = 5
 # Cloud/FleetAPI modes poll Tesla's rate-limited cloud API rather than a LAN
@@ -47,7 +55,7 @@ MIN_SCAN_INTERVAL = 2
 MANUFACTURER = "Tesla"
 
 # pypowerwall.Powerwall()'s own default (5s) is tight for TEDAPI mode against a
-# Powerwall 3 gateway: building the /api/meters/aggregates response there fans out
+# Powerwall 2/3 gateway: building the /api/meters/aggregates response there fans out
 # into an extra internal get_pw3_vitals() request, so a single slow gateway/Wi-Fi
 # response can blow the budget and surface as a spurious read-timeout UpdateFailed.
 # Passed to every connection type in coordinator.build_powerwall_kwargs().

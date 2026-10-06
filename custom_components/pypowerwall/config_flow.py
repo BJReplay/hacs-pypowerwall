@@ -17,6 +17,7 @@ from .const import (
     CONF_AUTHPATH,
     CONF_CONN_TYPE,
     CONF_GW_PWD,
+    CONF_PW_PASSWORD,
     CONF_RSA_KEY_PATH,
     CONF_SITEID,
     CONF_WIFI_HOST,
@@ -26,6 +27,7 @@ from .const import (
     CONN_TYPE_LOCAL,
     CONN_TYPE_TEDAPI,
     CONN_TYPE_TEDAPI_V1R,
+    CONN_TYPE_TEDAPI_V1R_PW2,
     DEFAULT_SCAN_INTERVAL,
     DEFAULT_SCAN_INTERVAL_CLOUD,
     DOMAIN,
@@ -69,6 +71,16 @@ STEP_TEDAPI_V1R_SCHEMA = vol.Schema(
     }
 )
 
+STEP_TEDAPI_V1R_PW2_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_HOST): str,
+        vol.Required(CONF_GW_PWD): str,
+        vol.Required(CONF_PW_PASSWORD): str,
+        vol.Required(CONF_RSA_KEY_PATH): str,
+        vol.Optional(CONF_WIFI_HOST): str,
+    }
+)
+
 STEP_CLOUD_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_AUTHPATH): str,
@@ -91,6 +103,7 @@ MENU_OPTIONS = [
     CONN_TYPE_CLOUD,
     CONN_TYPE_FLEETAPI,
     CONN_TYPE_TEDAPI_V1R,
+    CONN_TYPE_TEDAPI_V1R_PW2,
 ]
 
 # Each connection type's settings schema, keyed so the reconfigure step can
@@ -102,6 +115,7 @@ CONN_TYPE_SCHEMAS: dict[str, vol.Schema] = {
     CONN_TYPE_CLOUD: STEP_CLOUD_SCHEMA,
     CONN_TYPE_FLEETAPI: STEP_FLEETAPI_SCHEMA,
     CONN_TYPE_TEDAPI_V1R: STEP_TEDAPI_V1R_SCHEMA,
+    CONN_TYPE_TEDAPI_V1R_PW2: STEP_TEDAPI_V1R_PW2_SCHEMA,
 }
 
 
@@ -242,6 +256,14 @@ class PypowerwallConfigFlow(ConfigFlow, domain=DOMAIN):
         """TEDAPI v1r LAN mode: requires an RSA key from `python -m pypowerwall register`."""
         return await self._async_step_connection(
             CONN_TYPE_TEDAPI_V1R, STEP_TEDAPI_V1R_SCHEMA, user_input
+        )
+
+    async def async_step_tedapi_v1r_pw2(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """TEDAPI v1r LAN mode: requires an RSA key from `python -m pypowerwall register`."""
+        return await self._async_step_connection(
+            CONN_TYPE_TEDAPI_V1R_PW2, STEP_TEDAPI_V1R_PW2_SCHEMA, user_input
         )
 
     @staticmethod

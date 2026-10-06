@@ -20,6 +20,7 @@ from .const import (
     CONF_AUTHPATH,
     CONF_CONN_TYPE,
     CONF_GW_PWD,
+    CONF_PW_PASSWORD,
     CONF_RSA_KEY_PATH,
     CONF_SITEID,
     CONF_WIFI_HOST,
@@ -29,6 +30,7 @@ from .const import (
     CONN_TYPE_LOCAL,
     CONN_TYPE_TEDAPI,
     CONN_TYPE_TEDAPI_V1R,
+    CONN_TYPE_TEDAPI_V1R_PW2,
     DOMAIN,
     GRID_CONTROL_CONN_TYPES,
     POWERWALL_REQUEST_TIMEOUT,
@@ -173,7 +175,7 @@ def build_powerwall_kwargs(conn_type: str, data: Mapping[str, Any]) -> dict[str,
             "password": data[CONF_PASSWORD],
             "gw_pwd": data[CONF_GW_PWD],
         }
-    elif conn_type == CONN_TYPE_TEDAPI_V1R:
+    elif conn_type == CONN_TYPE_TEDAPI_V1R or conn_type == CONN_TYPE_TEDAPI_V1R_PW2:
         kwargs = {
             "host": data[CONF_HOST],
             "gw_pwd": data[CONF_GW_PWD],
@@ -181,6 +183,8 @@ def build_powerwall_kwargs(conn_type: str, data: Mapping[str, Any]) -> dict[str,
         }
         if data.get(CONF_WIFI_HOST):
             kwargs["wifi_host"] = data[CONF_WIFI_HOST]
+        if data.get(CONF_PW_PASSWORD):
+            kwargs["password"] = data[CONF_PW_PASSWORD]
     elif conn_type == CONN_TYPE_CLOUD:
         kwargs = {"cloudmode": True, "authpath": data[CONF_AUTHPATH]}
         if data.get(CONF_SITEID):
