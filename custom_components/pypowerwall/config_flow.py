@@ -75,7 +75,7 @@ STEP_TEDAPI_V1R_PW2_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_HOST): str,
         vol.Required(CONF_GW_PWD): str,
-        vol.Required(CONF_PW_PASSWORD): str,
+        vol.Optional(CONF_PW_PASSWORD): str,
         vol.Required(CONF_RSA_KEY_PATH): str,
         vol.Optional(CONF_WIFI_HOST): str,
     }
