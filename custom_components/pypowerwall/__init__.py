@@ -11,6 +11,7 @@ from .const import (
     ATTR_DURATION_SECONDS,
     CONF_CONN_TYPE,
     CONN_TYPE_TEDAPI_V1R,
+    CONN_TYPE_TEDAPI_V1R_PW2,
     DEFAULT_SCAN_INTERVAL,
     DEFAULT_SCAN_INTERVAL_CLOUD,
     DOMAIN,
@@ -58,7 +59,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: PypowerwallConfigEntry) 
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
-    if entry.data[CONF_CONN_TYPE] == CONN_TYPE_TEDAPI_V1R:
+    if entry.data[CONF_CONN_TYPE] == CONN_TYPE_TEDAPI_V1R or entry.data[CONF_CONN_TYPE] == CONN_TYPE_TEDAPI_V1R_PW2:
         _async_register_v1r_services(hass, entry)
 
     return True
@@ -106,7 +107,7 @@ def _async_register_v1r_services(hass: HomeAssistant, entry: PypowerwallConfigEn
             await hass.async_add_executor_job(coordinator.pw.schedule_max_backup, duration_seconds)
             await coordinator.async_request_refresh()
 
-        async def _cancel_max_backup(call: ServiceCall) -> None:
+        async def _cancel_max_backup(call: ServiceCall) -> None:    
             await hass.async_add_executor_job(coordinator.pw.cancel_max_backup)
             await coordinator.async_request_refresh()
 
