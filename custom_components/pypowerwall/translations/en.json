@@ -88,13 +88,30 @@
           "wifi_host": "Alternate WiFi TEDAPI host to fall back to"
         }
       },
+      "tedapi_v1r_pw2": {
+        "description": "Full-protobuf LAN access for Powerwall 2, using a pre-registered RSA key. Requires a one-time setup performed outside Home Assistant first: run `python -m pypowerwall register` to generate and register an RSA-4096 key pair with the gateway (this may require briefly power-cycling the gateway to confirm), then point this at the resulting private key file.",
+        "data": {
+          "host": "Host",
+          "gw_pwd": "Gateway password",
+          "rsa_key_path": "RSA private key path",
+          "wifi_host": "WiFi fallback host (optional)",
+          "password": "Powerwall legacy password (may be required for some Powerwall 2 gateways)"
+        },
+        "data_description": {
+          "host": "Hostname or IP address of the Powerwall gateway",
+          "gw_pwd": "Full gateway Wi-Fi password printed on the QR label",
+          "rsa_key_path": "Full path relative to HA root to the RSA-4096 private key PEM file produced by `python -m pypowerwall register`",
+          "wifi_host": "Alternate WiFi TEDAPI host to fall back to",
+          "password": "Powerwall legacy password (may be required for some Powerwall 2 gateways)"
+        }
+      },
       "reconfigure": {
         "title": "Reconfigure connection",
         "description": "Update the connection settings for this Powerwall ({conn_type} mode). Useful if the gateway password changed, the gateway moved to a new IP address, or a Cloud/FleetAPI config cache directory moved.\n\nThis must still reach the same physical gateway -- to switch to a different connection mode or a different Powerwall, remove this entry and add it again.",
         "data": {
           "host": "Host",
           "email": "Email",
-          "password": "Customer password",
+          "password": "Customer password / Powerwall legacy password",
           "gw_pwd": "Gateway password",
           "rsa_key_path": "RSA private key path",
           "wifi_host": "WiFi fallback host (optional)",
@@ -104,9 +121,9 @@
         "data_description": {
           "host": "Hostname or IP address of the Powerwall gateway (e.g. 192.168.91.1)",
           "email": "Customer account email",
-          "password": "Customer password set up on the gateway",
+          "password": "Customer password / Powerwall legacy password set up on the gateway",
           "gw_pwd": "Full gateway Wi-Fi password printed on the QR label",
-          "rsa_key_path": "Path to the RSA-4096 private key PEM file produced by `python -m pypowerwall register`",
+          "rsa_key_path": "Full path relative to HA root to the RSA-4096 private key PEM file produced by `python -m pypowerwall register`",
           "wifi_host": "Alternate WiFi TEDAPI host to fall back to",
           "authpath": "Directory containing the .pypowerwall.auth or .pypowerwall.fleetapi file",
           "siteid": "Tesla site ID to use if the account has more than one site"
