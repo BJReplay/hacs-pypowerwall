@@ -9,7 +9,8 @@
           "local": "Local login (customer email/password)",
           "cloud": "Cloud mode (existing auth cache)",
           "fleetapi": "FleetAPI (existing config cache)",
-          "tedapi_v1r": "TEDAPI v1r LAN (RSA key)"
+          "tedapi_v1r": "TEDAPI v1r LAN (RSA key)",
+          "tedapi_v1r_pw2": "TEDAPI v1r LAN (RSA key, Powerwall 2)"
         }
       },
       "tedapi": {
