@@ -9,10 +9,12 @@ from custom_components.pypowerwall.const import (
     CONF_AUTHPATH,
     CONF_CONN_TYPE,
     CONF_GW_PWD,
+    CONF_PW_PASSWORD,
     CONF_RSA_KEY_PATH,
     CONN_TYPE_CLOUD,
     CONN_TYPE_TEDAPI,
     CONN_TYPE_TEDAPI_V1R,
+    CONN_TYPE_TEDAPI_V1R_PW2,
     DOMAIN,
 )
 
@@ -25,7 +27,13 @@ V1R_ENTRY_DATA = {
     CONF_GW_PWD: "secret",
     CONF_RSA_KEY_PATH: "/key.pem",
 }
-
+V1R_PW2_ENTRY_DATA = {
+    CONF_CONN_TYPE: CONN_TYPE_TEDAPI_V1R_PW2,
+    "host": "192.168.91.1",
+    CONF_GW_PWD: "secret",
+    CONF_RSA_KEY_PATH: "/key.pem",
+    CONF_PW_PASSWORD: "legacy_password",
+}
 
 def _entity_id(hass: HomeAssistant, platform: str, unique_id: str) -> str:
     registry = er.async_get(hass)
@@ -176,6 +184,22 @@ async def test_v1r_entry_registers_and_calls_max_backup_services(hass: HomeAssis
     await hass.async_block_till_done()
     pw.cancel_max_backup.assert_called_once_with()
 
+async def test_v1r_pw2_entry_registers_and_calls_max_backup_services(hass: HomeAssistant) -> None:
+    pw = make_fake_pw()
+    await _setup_entry(hass, pw, V1R_PW2_ENTRY_DATA)
+
+    assert hass.services.has_service(DOMAIN, "schedule_max_backup")
+    assert hass.services.has_service(DOMAIN, "cancel_max_backup")
+
+    await hass.services.async_call(
+        DOMAIN, "schedule_max_backup", {"duration_seconds": 3600}, blocking=True
+    )
+    await hass.async_block_till_done()
+    pw.schedule_max_backup.assert_called_once_with(3600)
+
+    await hass.services.async_call(DOMAIN, "cancel_max_backup", {}, blocking=True)
+    await hass.async_block_till_done()
+    pw.cancel_max_backup.assert_called_once_with()
 
 async def test_two_v1r_entries_unloading_one_keeps_services_for_the_other(
     hass: HomeAssistant,
@@ -245,14 +269,21 @@ async def test_v1r_entry_has_no_cloud_only_entities(hass: HomeAssistant) -> None
     assert registry.async_get_entity_id("switch", DOMAIN, f"{DIN}_grid_charging") is None
     assert registry.async_get_entity_id("select", DOMAIN, f"{DIN}_grid_export") is None
 
+async def test_v1r_pw2_entry_has_no_cloud_only_entities(hass: HomeAssistant) -> None:
+    pw = make_fake_pw()
+    await _setup_entry(hass, pw, V1R_PW2_ENTRY_DATA)
 
-async def test_v1r_entry_has_grid_islanding_buttons(hass: HomeAssistant) -> None:
+    registry = er.async_get(hass)
+    assert registry.async_get_entity_id("switch", DOMAIN, f"{DIN}_grid_charging") is None
+    assert registry.async_get_entity_id("select", DOMAIN, f"{DIN}_grid_export") is None
+
+async def test_v1r_pw2_entry_has_grid_islanding_buttons(hass: HomeAssistant) -> None:
     """TEDAPI v1r mode is the only mode where go_off_grid/reconnect_grid actually
     work (via pypowerwall's signed v1r send_island_mode() transport), so it's the
     only mode where these buttons are created (see GRID_ISLANDING_CONN_TYPES).
     """
     pw = make_fake_pw()
-    await _setup_entry(hass, pw, V1R_ENTRY_DATA)
+    await _setup_entry(hass, pw, V1R_PW2_ENTRY_DATA)
 
     registry = er.async_get(hass)
     assert registry.async_get_entity_id("button", DOMAIN, f"{DIN}_reconnect_grid") is not None
@@ -268,6 +299,29 @@ async def test_reconnect_grid_button_calls_pw(hass: HomeAssistant) -> None:
     await hass.async_block_till_done()
 
     pw.reconnect_grid.assert_called_once_with()
+
+async def test_reconnect_grid_button_calls_pw_v1r_pw2(hass: HomeAssistant) -> None:
+    pw = make_fake_pw()
+    await _setup_entry(hass, pw, V1R_PW2_ENTRY_DATA)
+
+    entity_id = _entity_id(hass, "button", "reconnect_grid")
+    await hass.services.async_call("button", "press", {"entity_id": entity_id}, blocking=True)
+    await hass.async_block_till_done()
+
+    pw.reconnect_grid.assert_called_once_with()
+
+
+async def test_go_off_grid_button_disabled_by_default_pw2(hass: HomeAssistant) -> None:
+    pw = make_fake_pw()
+    await _setup_entry(hass, pw, V1R_PW2_ENTRY_DATA)
+
+    registry = er.async_get(hass)
+    entity_id = registry.async_get_entity_id("button", DOMAIN, f"{DIN}_go_off_grid")
+    assert entity_id is not None
+    entity_entry = registry.async_get(entity_id)
+    assert entity_entry.disabled_by is er.RegistryEntryDisabler.INTEGRATION
+    # Disabled entities aren't instantiated by the platform, so they have no state.
+    assert hass.states.get(entity_id) is None
 
 
 async def test_go_off_grid_button_disabled_by_default(hass: HomeAssistant) -> None:
@@ -288,6 +342,26 @@ async def test_go_off_grid_button_calls_pw_with_confirm_when_enabled(
 ) -> None:
     pw = make_fake_pw()
     entry = await _setup_entry(hass, pw, V1R_ENTRY_DATA)
+
+    registry = er.async_get(hass)
+    entity_id = registry.async_get_entity_id("button", DOMAIN, f"{DIN}_go_off_grid")
+    registry.async_update_entity(entity_id, disabled_by=None)
+    await hass.async_block_till_done()
+
+    with patch(CONNECT_TARGET, return_value=pw):
+        await hass.config_entries.async_reload(entry.entry_id)
+        await hass.async_block_till_done()
+
+    await hass.services.async_call("button", "press", {"entity_id": entity_id}, blocking=True)
+    await hass.async_block_till_done()
+
+    pw.go_off_grid.assert_called_once_with(True)
+
+async def test_go_off_grid_button_calls_pw_with_confirm_when_enabled_pw2(
+    hass: HomeAssistant,
+) -> None:
+    pw = make_fake_pw()
+    entry = await _setup_entry(hass, pw, V1R_PW2_ENTRY_DATA)
 
     registry = er.async_get(hass)
     entity_id = registry.async_get_entity_id("button", DOMAIN, f"{DIN}_go_off_grid")

@@ -10,6 +10,7 @@ from custom_components.pypowerwall.const import (
     CONF_AUTHPATH,
     CONF_CONN_TYPE,
     CONF_GW_PWD,
+    CONF_PW_PASSWORD,
     CONF_RSA_KEY_PATH,
     CONN_TYPE_CLOUD,
     CONN_TYPE_FLEETAPI,
@@ -17,6 +18,7 @@ from custom_components.pypowerwall.const import (
     CONN_TYPE_LOCAL,
     CONN_TYPE_TEDAPI,
     CONN_TYPE_TEDAPI_V1R,
+    CONN_TYPE_TEDAPI_V1R_PW2,
     DEFAULT_SCAN_INTERVAL,
     DEFAULT_SCAN_INTERVAL_CLOUD,
     DOMAIN,
@@ -52,6 +54,7 @@ async def test_menu_shown(hass: HomeAssistant) -> None:
         CONN_TYPE_CLOUD,
         CONN_TYPE_FLEETAPI,
         CONN_TYPE_TEDAPI_V1R,
+        CONN_TYPE_TEDAPI_V1R_PW2,
     }
 
 
@@ -193,6 +196,24 @@ async def test_tedapi_v1r_flow_success(hass: HomeAssistant) -> None:
 
     assert result2["type"] == "create_entry"
     assert result2["data"][CONF_CONN_TYPE] == CONN_TYPE_TEDAPI_V1R
+
+
+async def test_tedapi_v1r_pw2_flow_success(hass: HomeAssistant) -> None:
+    with patch(CONNECT_TARGET, return_value=make_fake_pw()):
+        result = await _select_menu(hass, await _start_menu(hass), CONN_TYPE_TEDAPI_V1R_PW2)
+        result2 = await hass.config_entries.flow.async_configure(
+            result["flow_id"],
+            {
+                CONF_HOST: "192.168.91.1",
+                CONF_GW_PWD: "secret",
+                CONF_RSA_KEY_PATH: "/config/pypowerwall/tedapi_rsa_private.pem",
+                CONF_PW_PASSWORD: "legacy_password",
+            },
+        )
+
+    assert result2["type"] == "create_entry"
+    assert result2["data"][CONF_CONN_TYPE] == CONN_TYPE_TEDAPI_V1R_PW2
+
 
 
 def _scan_interval_default(result) -> int:

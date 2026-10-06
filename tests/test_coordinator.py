@@ -11,6 +11,7 @@ from custom_components.pypowerwall.const import (
     CONF_AUTHPATH,
     CONF_CONN_TYPE,
     CONF_GW_PWD,
+    CONF_PW_PASSWORD,
     CONF_RSA_KEY_PATH,
     CONF_SITEID,
     CONF_WIFI_HOST,
@@ -20,6 +21,7 @@ from custom_components.pypowerwall.const import (
     CONN_TYPE_LOCAL,
     CONN_TYPE_TEDAPI,
     CONN_TYPE_TEDAPI_V1R,
+    CONN_TYPE_TEDAPI_V1R_PW2,
     DOMAIN,
     POWERWALL_REQUEST_TIMEOUT,
 )
@@ -224,6 +226,44 @@ class TestBuildPowerwallKwargs:
             },
         )
         assert kwargs["wifi_host"] == "10.0.0.5"
+
+    def test_tedapi_v1r_pw2_minimal(self):
+        kwargs = build_powerwall_kwargs(
+            CONN_TYPE_TEDAPI_V1R_PW2,
+            {
+                CONF_HOST: "h",
+                CONF_GW_PWD: "g",
+                CONF_RSA_KEY_PATH: "/key.pem",
+                CONF_PW_PASSWORD: "legacy_password",
+            },
+        )
+        assert kwargs == {
+            "host": "h",
+            "gw_pwd": "g",
+            "rsa_key_path": "/key.pem",
+            "pw_password": "legacy_password",
+            "timeout": POWERWALL_REQUEST_TIMEOUT,
+        }
+    
+    def test_tedapi_v1r_pw2_with_wifi_host(self):
+        kwargs = build_powerwall_kwargs(
+            CONN_TYPE_TEDAPI_V1R_PW2,
+            {
+                CONF_HOST: "h",
+                CONF_GW_PWD: "g",
+                CONF_RSA_KEY_PATH: "/key.pem",
+                CONF_PW_PASSWORD: "legacy_password",
+                CONF_WIFI_HOST: "10.0.0.5",
+            },
+        )
+        assert kwargs == {
+            "host": "h",
+            "gw_pwd": "g",
+            "rsa_key_path": "/key.pem",
+            "pw_password": "legacy_password",
+            "wifi_host": "10.0.0.5",
+            "timeout": POWERWALL_REQUEST_TIMEOUT,
+        }
 
     def test_cloud_minimal(self):
         kwargs = build_powerwall_kwargs(CONN_TYPE_CLOUD, {CONF_AUTHPATH: "/auth"})
