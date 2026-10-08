@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.0](https://github.com/jackrayner/hacs-pypowerwall/compare/0.9.0...0.10.0) (2026-10-08)
+
+
+### Features
+
+* expose alert names as an attribute on the active alerts sensor ([8cb11dc](https://github.com/jackrayner/hacs-pypowerwall/commit/8cb11dc980424598cd2f38bc30b14dda0eb1be60))
+* expose alert names as an attribute on the active alerts sensor ([fe5cad6](https://github.com/jackrayner/hacs-pypowerwall/commit/fe5cad6df6903c09aa0dae67dd370f08c6ebe16b))
+
 ## [0.9.0](https://github.com/jackrayner/hacs-pypowerwall/compare/0.8.0...0.9.0) (2026-10-08)
 
 
