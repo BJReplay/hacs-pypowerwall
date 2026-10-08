@@ -34,7 +34,7 @@
         "data_description": {
           "host": "Hostname or IP address of the Powerwall gateway",
           "email": "Customer account email",
-          "password": "Customer password set up on the gateway (for TEDAPI v1r, the customer or legacy password)",
+          "password": "Customer password set up on the gateway",
           "gw_pwd": "Full gateway Wi-Fi password printed on the QR label"
         }
       },
@@ -78,14 +78,14 @@
         "data": {
           "host": "Host",
           "gw_pwd": "Gateway password (optional)",
-          "password": "Customer / legacy password (optional)",
+          "password": "Customer password (optional)",
           "rsa_key_path": "RSA private key path",
           "wifi_host": "WiFi fallback host (optional)"
         },
         "data_description": {
           "host": "Hostname or IP address of the Powerwall gateway",
-          "gw_pwd": "Full gateway Wi-Fi password printed on the QR label. At least one of this and the customer / legacy password is required",
-          "password": "Customer or Powerwall legacy password. Older Powerwall 2 gateways may need this instead of the gateway password. If omitted, the last 5 characters of the gateway password are used",
+          "gw_pwd": "Full gateway Wi-Fi password printed on the QR label. At least one of this and the customer password is required",
+          "password": "Customer password. If omitted, the last 5 characters of the gateway password are used",
           "rsa_key_path": "Path to the RSA-4096 private key PEM file produced by `python -m pypowerwall register`",
           "wifi_host": "Alternate WiFi TEDAPI host to fall back to"
         }
@@ -96,7 +96,7 @@
         "data": {
           "host": "Host",
           "email": "Email",
-          "password": "Customer / legacy password",
+          "password": "Customer password",
           "gw_pwd": "Gateway password",
           "rsa_key_path": "RSA private key path",
           "wifi_host": "WiFi fallback host (optional)",
@@ -117,7 +117,7 @@
     },
     "error": {
       "cannot_connect": "Failed to connect. Check the connection details and try again.",
-      "missing_password": "Enter the gateway password, the customer / legacy password, or both.",
+      "missing_password": "Enter the gateway password, the customer password, or both.",
       "unknown": "Unexpected error"
     },
     "abort": {

@@ -209,15 +209,15 @@ async def _v1r_flow(hass: HomeAssistant, extra: dict):
 
 
 async def test_tedapi_v1r_flow_password_only_success(hass: HomeAssistant) -> None:
-    result = await _v1r_flow(hass, {CONF_PASSWORD: "legacy"})
+    result = await _v1r_flow(hass, {CONF_PASSWORD: "customer-pw"})
 
     assert result["type"] == "create_entry"
     assert CONF_GW_PWD not in result["data"]
-    assert result["data"][CONF_PASSWORD] == "legacy"
+    assert result["data"][CONF_PASSWORD] == "customer-pw"
 
 
 async def test_tedapi_v1r_flow_both_passwords_success(hass: HomeAssistant) -> None:
-    result = await _v1r_flow(hass, {CONF_GW_PWD: "secret", CONF_PASSWORD: "legacy"})
+    result = await _v1r_flow(hass, {CONF_GW_PWD: "secret", CONF_PASSWORD: "customer-pw"})
 
     assert result["type"] == "create_entry"
 

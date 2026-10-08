@@ -111,7 +111,7 @@ class PowerwallConnectionError(Exception):
 
 
 class MissingPasswordError(Exception):
-    """Raised when a v1r entry supplies neither the gateway nor the customer/legacy password."""
+    """Raised when a v1r entry supplies neither the gateway nor the customer password."""
 
 
 def _connect_and_get_info(conn_type: str, data: dict[str, Any]) -> tuple[str, str | None]:
@@ -130,7 +130,7 @@ async def _validate_input(
 ) -> tuple[str, str | None]:
     """Validate the user input, returning (din, site_name).
 
-    v1r login takes either the gateway password or the customer/legacy password
+    v1r login takes either the gateway password or the customer password
     (pypowerwall derives the latter from the last 5 characters of the former), so
     both are optional in the schema -- voluptuous can't express "one of" -- and
     at least one is enforced here.
