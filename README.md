@@ -73,9 +73,9 @@ The integration ships a translation file for every language Home Assistant suppo
 | Active alerts | sensor | count of active alerts; the alert names (e.g. `GridCodesWrite`) are in the `alerts` attribute, sorted, for templates and automations |
 | Firmware version | sensor | diagnostic |
 | Uptime | sensor | diagnostic, seconds |
-| Tariff name, utility, code | sensor | diagnostic, the site's utility tariff from `get_tariff()`. **Cloud and FleetAPI modes only.** |
+| Tariff name, utility, code | sensor | diagnostic, the site's utility tariff from `get_tariff()` ([fields](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/API.md#tesla-tariff-and-time-of-use-settings)). **Cloud and FleetAPI modes only.** |
 | `<device>` temperature | sensor | one per battery pack reported by `vitals()`, added dynamically |
-| `<device>` fan A/B speed, duty | sensor | **⚠️ Disabled by default.** Diagnostic RPM and drive duty-cycle (%) for each Powerwall 3 inverter fan, added dynamically. Needs a TEDAPI-backed mode with the default `V2024_06` API version; not reported by Powerwall 2, Cloud, or FleetAPI. |
+| `<device>` fan A/B speed, duty | sensor | **⚠️ Disabled by default.** Diagnostic RPM and drive duty-cycle (%) for each Powerwall 3 inverter fan, added dynamically. Needs a TEDAPI-backed mode with the default `V2024_06` API version ([why](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/RELEASE.md)); not reported by Powerwall 2, Cloud, or FleetAPI. |
 | Reconnect to grid | button | physically closes the grid contactor, reconnecting the home to the utility grid |
 | Disconnect from grid | button | **⚠️ Disabled by default.** See callout below before enabling. |
 
@@ -89,7 +89,7 @@ To add the battery to Home Assistant's Energy dashboard, go to Settings → Dash
 
 **⚠️ "Disconnect from grid" physically opens the Powerwall's grid contactor.** Pressing it islands the home from the utility grid: solar keeps producing and the battery serves home load, but there's a real-world ~30 second solar production dropout while the contactor switches over, and the home stays off-grid until "Reconnect to grid" is pressed (or the gateway is otherwise commanded to reconnect). Because a button press is irreversible-in-the-moment and affects the physical grid connection, this entity ships **disabled** — it will not appear as an active entity until you explicitly enable it via its entity settings (Settings → Devices & Services → Entities → find it → enable). Note that as of pypowerwall 0.16.1 this method isn't yet implemented by any backend (local/TEDAPI/hybrid/cloud/FleetAPI) and currently no-ops with a logged error regardless of connection mode; the entity is included as forward-compatible surface for whenever a backend adds support, and is intentionally not gated by connection type since none is currently known to work.
 
-Two more write actions are exposed as [Home Assistant actions/services](https://www.home-assistant.io/docs/scripts/service-calls/) rather than entities, since they're momentary rather than persistent state, and only available in **TEDAPI v1r LAN mode**:
+Two more write actions are exposed as [Home Assistant actions/services](https://www.home-assistant.io/docs/scripts/service-calls/) rather than entities, since they're momentary rather than persistent state, and only available in **TEDAPI v1r LAN mode** (see pypowerwall's [backup events docs](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/API.md#backup-events-v1r-mode-only)):
 
 | Service | Fields | Notes |
 | --- | --- | --- |
