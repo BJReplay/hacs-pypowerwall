@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktive advarsler" },
       "firmware_version": { "name": "Firmwareversion" },
       "uptime": { "name": "Oppetid" },
+      "tariff_name": { "name": "Tarifnavn" },
+      "tariff_utility": { "name": "Tarifselskab" },
+      "tariff_code": { "name": "Tarifkode" },
       "battery_temp": { "name": "{device} temperatur" },
       "fan_speed": { "name": "{device} blæser {fan} hastighed" },
       "fan_duty": { "name": "{device} blæser {fan} driftscyklus" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Tilsluttet nettet" }
+      "grid_connected": { "name": "Tilsluttet nettet" },
+      "battery_calibration": { "name": "Batterikalibrering" },
+      "battery_fault": { "name": "Batterifejl" },
+      "grid_manually_disconnected": { "name": "Manuelt frakoblet nettet" },
+      "self_consumption_reserve_limit": { "name": "Batteri ved reservegrænse" },
+      "solar_charge_only_limited": { "name": "Kun solopladning begrænset" },
+      "backfeed_limited": { "name": "Tilbageføring begrænset" },
+      "site_min_power_limited": { "name": "Anlæggets minimumseffekt begrænset" }
     },
     "number": {
       "battery_reserve": { "name": "Batterireserve" }

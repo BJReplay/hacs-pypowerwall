@@ -156,12 +156,22 @@
       "alert_count": { "name": "Alarme aktive" },
       "firmware_version": { "name": "Versioni i firmware-it" },
       "uptime": { "name": "Koha e funksionimit" },
+      "tariff_name": { "name": "Emri i tarifës" },
+      "tariff_utility": { "name": "Furnizuesi i tarifës" },
+      "tariff_code": { "name": "Kodi i tarifës" },
       "battery_temp": { "name": "Temperatura e {device}" },
       "fan_speed": { "name": "Shpejtësia e ventilatorit {fan} e {device}" },
       "fan_duty": { "name": "Cikli i punës i ventilatorit {fan} e {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Lidhur me rrjetin" }
+      "grid_connected": { "name": "Lidhur me rrjetin" },
+      "battery_calibration": { "name": "Kalibrimi i baterisë" },
+      "battery_fault": { "name": "Defekt i baterisë" },
+      "grid_manually_disconnected": { "name": "Shkëputur manualisht nga rrjeti" },
+      "self_consumption_reserve_limit": { "name": "Bateria në kufirin e rezervës" },
+      "solar_charge_only_limited": { "name": "Ngarkimi vetëm me diell i kufizuar" },
+      "backfeed_limited": { "name": "Rikthimi në rrjet i kufizuar" },
+      "site_min_power_limited": { "name": "Fuqia minimale e vendit e kufizuar" }
     },
     "number": {
       "battery_reserve": { "name": "Rezerva e baterisë" }

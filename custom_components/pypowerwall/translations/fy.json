@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktive warskôgings" },
       "firmware_version": { "name": "Firmwareferzje" },
       "uptime": { "name": "Bedriuwstiid" },
+      "tariff_name": { "name": "Tariefnamme" },
+      "tariff_utility": { "name": "Tariefleveransier" },
+      "tariff_code": { "name": "Tariefkoade" },
       "battery_temp": { "name": "{device} temperatuer" },
       "fan_speed": { "name": "{device} ventilator {fan} snelheid" },
       "fan_duty": { "name": "{device} ventilator {fan} wurksyklus" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Ferbûn mei it net" }
+      "grid_connected": { "name": "Ferbûn mei it net" },
+      "battery_calibration": { "name": "Batterijkalibraasje" },
+      "battery_fault": { "name": "Batterijflater" },
+      "grid_manually_disconnected": { "name": "Manuell fan it net skieden" },
+      "self_consumption_reserve_limit": { "name": "Batterij op reserveflaters" },
+      "solar_charge_only_limited": { "name": "Allinnich sinneladen beheind" },
+      "backfeed_limited": { "name": "Weromlevering beheind" },
+      "site_min_power_limited": { "name": "Minimaal fermogen fan de side beheind" }
     },
     "number": {
       "battery_reserve": { "name": "Batterijreserve" }

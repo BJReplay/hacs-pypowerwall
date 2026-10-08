@@ -182,3 +182,32 @@ async def test_cloud_entry_explicit_scan_interval_overrides_cloud_default(
         await hass.async_block_till_done()
 
     assert entry.runtime_data.update_interval == timedelta(seconds=20)
+
+
+@pytest.mark.parametrize(
+    ("key", "alert"),
+    [
+        ("battery_calibration", "BatteryCalibration"),
+        ("battery_fault", "BatteryFault"),
+        ("grid_manually_disconnected", "ScheduledIslandContactorOpen"),
+        ("self_consumption_reserve_limit", "SelfConsumptionReservedLimit"),
+        ("solar_charge_only_limited", "SolarChargeOnlyLimited"),
+        ("backfeed_limited", "BackfeedLimited"),
+        ("site_min_power_limited", "SiteMinPowerLimited"),
+    ],
+)
+async def test_alert_binary_sensors_are_disabled_by_default(
+    hass: HomeAssistant, key: str, alert: str
+) -> None:
+    entry = MockConfigEntry(domain=DOMAIN, unique_id=DIN, data=ENTRY_DATA)
+    entry.add_to_hass(hass)
+
+    with patch(CONNECT_TARGET, return_value=make_fake_pw(alerts=[alert])):
+        assert await hass.config_entries.async_setup(entry.entry_id)
+        await hass.async_block_till_done()
+
+    registry = er.async_get(hass)
+    entity_id = registry.async_get_entity_id("binary_sensor", DOMAIN, f"{DIN}_{key}")
+    assert entity_id is not None
+    assert registry.async_get(entity_id).disabled_by is er.RegistryEntryDisabler.INTEGRATION
+    assert hass.states.get(entity_id) is None

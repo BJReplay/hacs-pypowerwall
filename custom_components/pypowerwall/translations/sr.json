@@ -156,12 +156,22 @@
       "alert_count": { "name": "Активна упозорења" },
       "firmware_version": { "name": "Верзија фирмвера" },
       "uptime": { "name": "Време рада" },
+      "tariff_name": { "name": "Назив тарифе" },
+      "tariff_utility": { "name": "Снабдевач тарифе" },
+      "tariff_code": { "name": "Шифра тарифе" },
       "battery_temp": { "name": "Температура {device}" },
       "fan_speed": { "name": "Брзина вентилатора {fan} ({device})" },
       "fan_duty": { "name": "Радни циклус вентилатора {fan} ({device})" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Повезано на мрежу" }
+      "grid_connected": { "name": "Повезано на мрежу" },
+      "battery_calibration": { "name": "Калибрација батерије" },
+      "battery_fault": { "name": "Квар батерије" },
+      "grid_manually_disconnected": { "name": "Ручно искључено са мреже" },
+      "self_consumption_reserve_limit": { "name": "Батерија на граници резерве" },
+      "solar_charge_only_limited": { "name": "Само соларно пуњење ограничено" },
+      "backfeed_limited": { "name": "Повратно напајање ограничено" },
+      "site_min_power_limited": { "name": "Минимална снага локације ограничена" }
     },
     "number": {
       "battery_reserve": { "name": "Резерва батерије" }

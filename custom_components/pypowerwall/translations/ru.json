@@ -156,12 +156,22 @@
       "alert_count": { "name": "Активные предупреждения" },
       "firmware_version": { "name": "Версия прошивки" },
       "uptime": { "name": "Время работы" },
+      "tariff_name": { "name": "Название тарифа" },
+      "tariff_utility": { "name": "Поставщик тарифа" },
+      "tariff_code": { "name": "Код тарифа" },
       "battery_temp": { "name": "Температура {device}" },
       "fan_speed": { "name": "Скорость вентилятора {fan} {device}" },
       "fan_duty": { "name": "Заполнение ШИМ вентилятора {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Подключение к сети" }
+      "grid_connected": { "name": "Подключение к сети" },
+      "battery_calibration": { "name": "Калибровка батареи" },
+      "battery_fault": { "name": "Неисправность батареи" },
+      "grid_manually_disconnected": { "name": "Отключено от сети вручную" },
+      "self_consumption_reserve_limit": { "name": "Батарея на пределе резерва" },
+      "solar_charge_only_limited": { "name": "Зарядка только от солнца ограничена" },
+      "backfeed_limited": { "name": "Обратная отдача в сеть ограничена" },
+      "site_min_power_limited": { "name": "Минимальная мощность объекта ограничена" }
     },
     "number": {
       "battery_reserve": { "name": "Резерв батареи" }

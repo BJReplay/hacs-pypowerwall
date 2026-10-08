@@ -156,12 +156,22 @@
       "alert_count": { "name": "Foláirimh ghníomhacha" },
       "firmware_version": { "name": "Leagan bogearraí seasta" },
       "uptime": { "name": "Am rite" },
+      "tariff_name": { "name": "Ainm an taraife" },
+      "tariff_utility": { "name": "Fóntas an taraife" },
+      "tariff_code": { "name": "Cód an taraife" },
       "battery_temp": { "name": "Teocht {device}" },
       "fan_speed": { "name": "Luas gaothraitheora {fan} {device}" },
       "fan_duty": { "name": "Timthriall dualgais gaothraitheora {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Ceangailte leis an ngreille" }
+      "grid_connected": { "name": "Ceangailte leis an ngreille" },
+      "battery_calibration": { "name": "Calabrú ceallraí" },
+      "battery_fault": { "name": "Locht ceallraí" },
+      "grid_manually_disconnected": { "name": "Dícheangailte ón ngreille de láimh" },
+      "self_consumption_reserve_limit": { "name": "Ceallraí ag an teorainn chúltaca" },
+      "solar_charge_only_limited": { "name": "Muirear gréine amháin teoranta" },
+      "backfeed_limited": { "name": "Fotha ar ais teoranta" },
+      "site_min_power_limited": { "name": "Íosmhéid cumhachta an tsuímh teoranta" }
     },
     "number": {
       "battery_reserve": { "name": "Cúlchiste ceallra" }

@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktívne upozornenia" },
       "firmware_version": { "name": "Verzia firmvéru" },
       "uptime": { "name": "Doba prevádzky" },
+      "tariff_name": { "name": "Názov tarify" },
+      "tariff_utility": { "name": "Dodávateľ tarify" },
+      "tariff_code": { "name": "Kód tarify" },
       "battery_temp": { "name": "Teplota {device}" },
       "fan_speed": { "name": "Rýchlosť ventilátora {fan} {device}" },
       "fan_duty": { "name": "Plnenie ventilátora {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Pripojené k sieti" }
+      "grid_connected": { "name": "Pripojené k sieti" },
+      "battery_calibration": { "name": "Kalibrácia batérie" },
+      "battery_fault": { "name": "Porucha batérie" },
+      "grid_manually_disconnected": { "name": "Ručne odpojené od siete" },
+      "self_consumption_reserve_limit": { "name": "Batéria na limite rezervy" },
+      "solar_charge_only_limited": { "name": "Nabíjanie iba zo slnka obmedzené" },
+      "backfeed_limited": { "name": "Spätný tok obmedzený" },
+      "site_min_power_limited": { "name": "Minimálny výkon miesta obmedzený" }
     },
     "number": {
       "battery_reserve": { "name": "Rezerva batérie" }

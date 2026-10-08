@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktif uyarılar" },
       "firmware_version": { "name": "Bellenim sürümü" },
       "uptime": { "name": "Çalışma süresi" },
+      "tariff_name": { "name": "Tarife adı" },
+      "tariff_utility": { "name": "Tarife sağlayıcısı" },
+      "tariff_code": { "name": "Tarife kodu" },
       "battery_temp": { "name": "{device} sıcaklığı" },
       "fan_speed": { "name": "{device} fan {fan} hızı" },
       "fan_duty": { "name": "{device} fan {fan} görev döngüsü" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Şebekeye bağlı" }
+      "grid_connected": { "name": "Şebekeye bağlı" },
+      "battery_calibration": { "name": "Batarya kalibrasyonu" },
+      "battery_fault": { "name": "Batarya arızası" },
+      "grid_manually_disconnected": { "name": "Şebekeden manuel olarak ayrıldı" },
+      "self_consumption_reserve_limit": { "name": "Batarya yedek sınırında" },
+      "solar_charge_only_limited": { "name": "Yalnızca güneşle şarj sınırlandı" },
+      "backfeed_limited": { "name": "Şebekeye geri besleme sınırlandı" },
+      "site_min_power_limited": { "name": "Tesis minimum gücü sınırlandı" }
     },
     "number": {
       "battery_reserve": { "name": "Batarya rezervi" }

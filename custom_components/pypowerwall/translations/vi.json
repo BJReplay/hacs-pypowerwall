@@ -156,12 +156,22 @@
       "alert_count": { "name": "Cảnh báo đang hoạt động" },
       "firmware_version": { "name": "Phiên bản firmware" },
       "uptime": { "name": "Thời gian hoạt động" },
+      "tariff_name": { "name": "Tên biểu giá" },
+      "tariff_utility": { "name": "Nhà cung cấp điện của biểu giá" },
+      "tariff_code": { "name": "Mã biểu giá" },
       "battery_temp": { "name": "Nhiệt độ {device}" },
       "fan_speed": { "name": "Tốc độ quạt {fan} của {device}" },
       "fan_duty": { "name": "Chu kỳ nhiệm vụ quạt {fan} của {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Đã kết nối lưới điện" }
+      "grid_connected": { "name": "Đã kết nối lưới điện" },
+      "battery_calibration": { "name": "Hiệu chuẩn pin" },
+      "battery_fault": { "name": "Lỗi pin" },
+      "grid_manually_disconnected": { "name": "Đã ngắt kết nối lưới điện thủ công" },
+      "self_consumption_reserve_limit": { "name": "Pin ở giới hạn dự phòng" },
+      "solar_charge_only_limited": { "name": "Giới hạn sạc chỉ từ năng lượng mặt trời" },
+      "backfeed_limited": { "name": "Giới hạn cấp ngược lên lưới" },
+      "site_min_power_limited": { "name": "Giới hạn công suất tối thiểu của địa điểm" }
     },
     "number": {
       "battery_reserve": { "name": "Dự trữ pin" }

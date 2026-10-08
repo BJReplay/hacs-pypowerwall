@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktyvūs įspėjimai" },
       "firmware_version": { "name": "Aparatinės programinės įrangos versija" },
       "uptime": { "name": "Veikimo laikas" },
+      "tariff_name": { "name": "Tarifo pavadinimas" },
+      "tariff_utility": { "name": "Tarifo tiekėjas" },
+      "tariff_code": { "name": "Tarifo kodas" },
       "battery_temp": { "name": "{device} temperatūra" },
       "fan_speed": { "name": "{device} ventiliatorius {fan} greitis" },
       "fan_duty": { "name": "{device} ventiliatorius {fan} darbo ciklas" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Prijungta prie tinklo" }
+      "grid_connected": { "name": "Prijungta prie tinklo" },
+      "battery_calibration": { "name": "Baterijos kalibravimas" },
+      "battery_fault": { "name": "Baterijos gedimas" },
+      "grid_manually_disconnected": { "name": "Rankiniu būdu atjungta nuo tinklo" },
+      "self_consumption_reserve_limit": { "name": "Baterija ties rezervo riba" },
+      "solar_charge_only_limited": { "name": "Tik saulės energijos įkrova apribota" },
+      "backfeed_limited": { "name": "Atgalinė tiekimas į tinklą apribotas" },
+      "site_min_power_limited": { "name": "Minimali objekto galia apribota" }
     },
     "number": {
       "battery_reserve": { "name": "Baterijos rezervas" }

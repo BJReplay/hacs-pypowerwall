@@ -156,12 +156,22 @@
       "alert_count": { "name": "Ενεργές ειδοποιήσεις" },
       "firmware_version": { "name": "Έκδοση firmware" },
       "uptime": { "name": "Χρόνος λειτουργίας" },
+      "tariff_name": { "name": "Όνομα τιμολογίου" },
+      "tariff_utility": { "name": "Πάροχος τιμολογίου" },
+      "tariff_code": { "name": "Κωδικός τιμολογίου" },
       "battery_temp": { "name": "Θερμοκρασία {device}" },
       "fan_speed": { "name": "Ταχύτητα ανεμιστήρα {fan} {device}" },
       "fan_duty": { "name": "Κύκλος λειτουργίας ανεμιστήρα {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Συνδεδεμένο στο δίκτυο" }
+      "grid_connected": { "name": "Συνδεδεμένο στο δίκτυο" },
+      "battery_calibration": { "name": "Βαθμονόμηση μπαταρίας" },
+      "battery_fault": { "name": "Βλάβη μπαταρίας" },
+      "grid_manually_disconnected": { "name": "Χειροκίνητα αποσυνδεδεμένο από το δίκτυο" },
+      "self_consumption_reserve_limit": { "name": "Μπαταρία στο όριο εφεδρείας" },
+      "solar_charge_only_limited": { "name": "Περιορισμένη φόρτιση μόνο από ηλιακή" },
+      "backfeed_limited": { "name": "Περιορισμένη τροφοδοσία προς το δίκτυο" },
+      "site_min_power_limited": { "name": "Περιορισμένη ελάχιστη ισχύς εγκατάστασης" }
     },
     "number": {
       "battery_reserve": { "name": "Εφεδρεία μπαταρίας" }

@@ -156,12 +156,22 @@
       "alert_count": { "name": "有効なアラート数" },
       "firmware_version": { "name": "ファームウェアバージョン" },
       "uptime": { "name": "稼働時間" },
+      "tariff_name": { "name": "料金プラン名" },
+      "tariff_utility": { "name": "料金プランの電力会社" },
+      "tariff_code": { "name": "料金プランコード" },
       "battery_temp": { "name": "{device}の温度" },
       "fan_speed": { "name": "{device}のファン{fan}の速度" },
       "fan_duty": { "name": "{device}のファン{fan}のデューティ比" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "系統接続" }
+      "grid_connected": { "name": "系統接続" },
+      "battery_calibration": { "name": "バッテリーキャリブレーション" },
+      "battery_fault": { "name": "バッテリー故障" },
+      "grid_manually_disconnected": { "name": "手動で系統から切断" },
+      "self_consumption_reserve_limit": { "name": "バッテリーが予備残量の下限" },
+      "solar_charge_only_limited": { "name": "太陽光のみの充電を制限中" },
+      "backfeed_limited": { "name": "逆潮流を制限中" },
+      "site_min_power_limited": { "name": "サイトの最小電力を制限中" }
     },
     "number": {
       "battery_reserve": { "name": "バッテリー予備率" }

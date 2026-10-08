@@ -156,12 +156,22 @@
       "alert_count": { "name": "Активні сповіщення" },
       "firmware_version": { "name": "Версія прошивки" },
       "uptime": { "name": "Час роботи" },
+      "tariff_name": { "name": "Назва тарифу" },
+      "tariff_utility": { "name": "Постачальник тарифу" },
+      "tariff_code": { "name": "Код тарифу" },
       "battery_temp": { "name": "Температура {device}" },
       "fan_speed": { "name": "Швидкість вентилятора {fan} {device}" },
       "fan_duty": { "name": "Заповнення ШІМ вентилятора {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Підключення до мережі" }
+      "grid_connected": { "name": "Підключення до мережі" },
+      "battery_calibration": { "name": "Калібрування акумулятора" },
+      "battery_fault": { "name": "Несправність акумулятора" },
+      "grid_manually_disconnected": { "name": "Вручну відключено від мережі" },
+      "self_consumption_reserve_limit": { "name": "Акумулятор на межі резерву" },
+      "solar_charge_only_limited": { "name": "Заряджання лише від сонця обмежено" },
+      "backfeed_limited": { "name": "Віддачу в мережу обмежено" },
+      "site_min_power_limited": { "name": "Мінімальну потужність об'єкта обмежено" }
     },
     "number": {
       "battery_reserve": { "name": "Резерв батареї" }

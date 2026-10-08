@@ -156,12 +156,22 @@
       "alert_count": { "name": "فعال الرٹس" },
       "firmware_version": { "name": "فرم ویئر ورژن" },
       "uptime": { "name": "اپ ٹائم" },
+      "tariff_name": { "name": "ٹیرف کا نام" },
+      "tariff_utility": { "name": "ٹیرف کی یوٹیلیٹی" },
+      "tariff_code": { "name": "ٹیرف کوڈ" },
       "battery_temp": { "name": "{device} کا درجہ حرارت" },
       "fan_speed": { "name": "{device} پنکھا {fan} کی رفتار" },
       "fan_duty": { "name": "{device} پنکھا {fan} کا ڈیوٹی سائیکل" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "گرڈ سے منسلک" }
+      "grid_connected": { "name": "گرڈ سے منسلک" },
+      "battery_calibration": { "name": "بیٹری کیلیبریشن" },
+      "battery_fault": { "name": "بیٹری کی خرابی" },
+      "grid_manually_disconnected": { "name": "گرڈ سے دستی طور پر منقطع" },
+      "self_consumption_reserve_limit": { "name": "بیٹری ریزرو حد پر" },
+      "solar_charge_only_limited": { "name": "صرف سولر چارجنگ محدود" },
+      "backfeed_limited": { "name": "بیک فیڈ محدود" },
+      "site_min_power_limited": { "name": "سائٹ کی کم از کم پاور محدود" }
     },
     "number": {
       "battery_reserve": { "name": "بیٹری ریزرو" }

@@ -156,12 +156,22 @@
       "alert_count": { "name": "התראות פעילות" },
       "firmware_version": { "name": "גרסת קושחה" },
       "uptime": { "name": "זמן פעילות" },
+      "tariff_name": { "name": "שם התעריף" },
+      "tariff_utility": { "name": "ספק התעריף" },
+      "tariff_code": { "name": "קוד התעריף" },
       "battery_temp": { "name": "טמפרטורת {device}" },
       "fan_speed": { "name": "מהירות מאוורר {fan} של {device}" },
       "fan_duty": { "name": "מחזור עבודה של מאוורר {fan} של {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "מחובר לרשת" }
+      "grid_connected": { "name": "מחובר לרשת" },
+      "battery_calibration": { "name": "כיול סוללה" },
+      "battery_fault": { "name": "תקלה בסוללה" },
+      "grid_manually_disconnected": { "name": "מנותק ידנית מהרשת" },
+      "self_consumption_reserve_limit": { "name": "הסוללה בגבול הרזרבה" },
+      "solar_charge_only_limited": { "name": "טעינה סולארית בלבד מוגבלת" },
+      "backfeed_limited": { "name": "הזנה חוזרת לרשת מוגבלת" },
+      "site_min_power_limited": { "name": "ההספק המינימלי של האתר מוגבל" }
     },
     "number": {
       "battery_reserve": { "name": "רזרבת סוללה" }

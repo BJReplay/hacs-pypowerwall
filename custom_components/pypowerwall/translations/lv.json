@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktīvie brīdinājumi" },
       "firmware_version": { "name": "Aparātprogrammatūras versija" },
       "uptime": { "name": "Darbības laiks" },
+      "tariff_name": { "name": "Tarifa nosaukums" },
+      "tariff_utility": { "name": "Tarifa piegādātājs" },
+      "tariff_code": { "name": "Tarifa kods" },
       "battery_temp": { "name": "{device} temperatūra" },
       "fan_speed": { "name": "{device} ventilators {fan} ātrums" },
       "fan_duty": { "name": "{device} ventilators {fan} darba cikls" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Pievienots tīklam" }
+      "grid_connected": { "name": "Pievienots tīklam" },
+      "battery_calibration": { "name": "Akumulatora kalibrēšana" },
+      "battery_fault": { "name": "Akumulatora kļūme" },
+      "grid_manually_disconnected": { "name": "Manuāli atvienots no tīkla" },
+      "self_consumption_reserve_limit": { "name": "Akumulators pie rezerves robežas" },
+      "solar_charge_only_limited": { "name": "Tikai saules uzlāde ierobežota" },
+      "backfeed_limited": { "name": "Atpakaļbarošana ierobežota" },
+      "site_min_power_limited": { "name": "Objekta minimālā jauda ierobežota" }
     },
     "number": {
       "battery_reserve": { "name": "Akumulatora rezerve" }

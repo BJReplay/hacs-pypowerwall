@@ -156,12 +156,22 @@
       "alert_count": { "name": "সক্রিয় সতর্কতা" },
       "firmware_version": { "name": "ফার্মওয়্যার ভার্সন" },
       "uptime": { "name": "আপটাইম" },
+      "tariff_name": { "name": "ট্যারিফের নাম" },
+      "tariff_utility": { "name": "ট্যারিফের ইউটিলিটি" },
+      "tariff_code": { "name": "ট্যারিফ কোড" },
       "battery_temp": { "name": "{device} তাপমাত্রা" },
       "fan_speed": { "name": "{device} ফ্যান {fan} গতি" },
       "fan_duty": { "name": "{device} ফ্যান {fan} ডিউটি" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "গ্রিডের সাথে সংযুক্ত" }
+      "grid_connected": { "name": "গ্রিডের সাথে সংযুক্ত" },
+      "battery_calibration": { "name": "ব্যাটারি ক্যালিব্রেশন" },
+      "battery_fault": { "name": "ব্যাটারির ত্রুটি" },
+      "grid_manually_disconnected": { "name": "ম্যানুয়ালি গ্রিড থেকে বিচ্ছিন্ন" },
+      "self_consumption_reserve_limit": { "name": "ব্যাটারি রিজার্ভ সীমায়" },
+      "solar_charge_only_limited": { "name": "শুধু সোলার চার্জ সীমিত" },
+      "backfeed_limited": { "name": "ব্যাকফিড সীমিত" },
+      "site_min_power_limited": { "name": "সাইটের ন্যূনতম পাওয়ার সীমিত" }
     },
     "number": {
       "battery_reserve": { "name": "ব্যাটারি রিজার্ভ" }

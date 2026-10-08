@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktiva varningar" },
       "firmware_version": { "name": "Firmwareversion" },
       "uptime": { "name": "Drifttid" },
+      "tariff_name": { "name": "Tariffnamn" },
+      "tariff_utility": { "name": "Tariffleverantör" },
+      "tariff_code": { "name": "Tariffkod" },
       "battery_temp": { "name": "{device} temperatur" },
       "fan_speed": { "name": "{device} fläkt {fan} hastighet" },
       "fan_duty": { "name": "{device} fläkt {fan} driftcykel" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Ansluten till nätet" }
+      "grid_connected": { "name": "Ansluten till nätet" },
+      "battery_calibration": { "name": "Batterikalibrering" },
+      "battery_fault": { "name": "Batterifel" },
+      "grid_manually_disconnected": { "name": "Manuellt frånkopplad från nätet" },
+      "self_consumption_reserve_limit": { "name": "Batteri vid reservgräns" },
+      "solar_charge_only_limited": { "name": "Endast solladdning begränsad" },
+      "backfeed_limited": { "name": "Återmatning begränsad" },
+      "site_min_power_limited": { "name": "Anläggningens minimieffekt begränsad" }
     },
     "number": {
       "battery_reserve": { "name": "Batterireserv" }

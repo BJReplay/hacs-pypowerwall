@@ -156,12 +156,22 @@
       "alert_count": { "name": "활성 경고" },
       "firmware_version": { "name": "펌웨어 버전" },
       "uptime": { "name": "가동 시간" },
+      "tariff_name": { "name": "요금제 이름" },
+      "tariff_utility": { "name": "요금제 전력 회사" },
+      "tariff_code": { "name": "요금제 코드" },
       "battery_temp": { "name": "{device} 온도" },
       "fan_speed": { "name": "{device} 팬 {fan} 속도" },
       "fan_duty": { "name": "{device} 팬 {fan} 듀티" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "전력망 연결됨" }
+      "grid_connected": { "name": "전력망 연결됨" },
+      "battery_calibration": { "name": "배터리 보정" },
+      "battery_fault": { "name": "배터리 결함" },
+      "grid_manually_disconnected": { "name": "전력망에서 수동 분리됨" },
+      "self_consumption_reserve_limit": { "name": "배터리 예비 한도" },
+      "solar_charge_only_limited": { "name": "태양광 전용 충전 제한됨" },
+      "backfeed_limited": { "name": "역송 제한됨" },
+      "site_min_power_limited": { "name": "사이트 최소 전력 제한됨" }
     },
     "number": {
       "battery_reserve": { "name": "배터리 예비 용량" }

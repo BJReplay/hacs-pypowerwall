@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktív riasztások" },
       "firmware_version": { "name": "Firmware verzió" },
       "uptime": { "name": "Üzemidő" },
+      "tariff_name": { "name": "Tarifa neve" },
+      "tariff_utility": { "name": "Tarifa szolgáltatója" },
+      "tariff_code": { "name": "Tarifakód" },
       "battery_temp": { "name": "{device} hőmérséklete" },
       "fan_speed": { "name": "{device} {fan}. ventilátorának sebessége" },
       "fan_duty": { "name": "{device} {fan}. ventilátorának kitöltési tényezője" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Hálózatra csatlakozva" }
+      "grid_connected": { "name": "Hálózatra csatlakozva" },
+      "battery_calibration": { "name": "Akkumulátor kalibrálása" },
+      "battery_fault": { "name": "Akkumulátorhiba" },
+      "grid_manually_disconnected": { "name": "Manuálisan leválasztva a hálózatról" },
+      "self_consumption_reserve_limit": { "name": "Akkumulátor a tartalékhatáron" },
+      "solar_charge_only_limited": { "name": "Csak napelemes töltés korlátozva" },
+      "backfeed_limited": { "name": "Visszatáplálás korlátozva" },
+      "site_min_power_limited": { "name": "A telephely minimális teljesítménye korlátozva" }
     },
     "number": {
       "battery_reserve": { "name": "Akkumulátor tartalék" }

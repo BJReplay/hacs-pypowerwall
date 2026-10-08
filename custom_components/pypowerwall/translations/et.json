@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktiivsed hoiatused" },
       "firmware_version": { "name": "Püsivara versioon" },
       "uptime": { "name": "Tööaeg" },
+      "tariff_name": { "name": "Tariifi nimi" },
+      "tariff_utility": { "name": "Tariifi pakkuja" },
+      "tariff_code": { "name": "Tariifi kood" },
       "battery_temp": { "name": "{device} temperatuur" },
       "fan_speed": { "name": "{device} ventilaator {fan} kiirus" },
       "fan_duty": { "name": "{device} ventilaator {fan} täitetegur" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Võrku ühendatud" }
+      "grid_connected": { "name": "Võrku ühendatud" },
+      "battery_calibration": { "name": "Aku kalibreerimine" },
+      "battery_fault": { "name": "Aku rike" },
+      "grid_manually_disconnected": { "name": "Käsitsi võrgust lahti ühendatud" },
+      "self_consumption_reserve_limit": { "name": "Aku on reservipiiril" },
+      "solar_charge_only_limited": { "name": "Ainult päikeselaadimine piiratud" },
+      "backfeed_limited": { "name": "Tagasisöötmine piiratud" },
+      "site_min_power_limited": { "name": "Objekti minimaalne võimsus piiratud" }
     },
     "number": {
       "battery_reserve": { "name": "Aku reserv" }

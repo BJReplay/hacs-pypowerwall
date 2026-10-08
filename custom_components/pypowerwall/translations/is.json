@@ -156,12 +156,22 @@
       "alert_count": { "name": "Virkar viðvaranir" },
       "firmware_version": { "name": "Útgáfa fastbúnaðar" },
       "uptime": { "name": "Rekstrartími" },
+      "tariff_name": { "name": "Heiti gjaldskrár" },
+      "tariff_utility": { "name": "Veita gjaldskrár" },
+      "tariff_code": { "name": "Kóði gjaldskrár" },
       "battery_temp": { "name": "Hitastig {device}" },
       "fan_speed": { "name": "Hraði viftu {fan} {device}" },
       "fan_duty": { "name": "Vinnulota viftu {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Tengt við rafveitu" }
+      "grid_connected": { "name": "Tengt við rafveitu" },
+      "battery_calibration": { "name": "Kvörðun rafhlöðu" },
+      "battery_fault": { "name": "Bilun í rafhlöðu" },
+      "grid_manually_disconnected": { "name": "Aftengt handvirkt frá rafveitu" },
+      "self_consumption_reserve_limit": { "name": "Rafhlaða við varaforðamörk" },
+      "solar_charge_only_limited": { "name": "Eingöngu sólarhleðsla takmörkuð" },
+      "backfeed_limited": { "name": "Bakmötun takmörkuð" },
+      "site_min_power_limited": { "name": "Lágmarksafl staðar takmarkað" }
     },
     "number": {
       "battery_reserve": { "name": "Varaforði rafhlöðu" }

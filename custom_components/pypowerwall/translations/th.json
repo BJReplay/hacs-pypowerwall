@@ -156,12 +156,22 @@
       "alert_count": { "name": "การแจ้งเตือนที่ทำงานอยู่" },
       "firmware_version": { "name": "เวอร์ชันเฟิร์มแวร์" },
       "uptime": { "name": "เวลาทำงานต่อเนื่อง" },
+      "tariff_name": { "name": "ชื่ออัตราค่าไฟ" },
+      "tariff_utility": { "name": "การไฟฟ้าของอัตราค่าไฟ" },
+      "tariff_code": { "name": "รหัสอัตราค่าไฟ" },
       "battery_temp": { "name": "อุณหภูมิ {device}" },
       "fan_speed": { "name": "ความเร็วพัดลม {fan} ของ {device}" },
       "fan_duty": { "name": "ดิวตี้ไซเคิลพัดลม {fan} ของ {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "เชื่อมต่อกับกริด" }
+      "grid_connected": { "name": "เชื่อมต่อกับกริด" },
+      "battery_calibration": { "name": "การสอบเทียบแบตเตอรี่" },
+      "battery_fault": { "name": "แบตเตอรี่ขัดข้อง" },
+      "grid_manually_disconnected": { "name": "ตัดการเชื่อมต่อจากกริดด้วยตนเอง" },
+      "self_consumption_reserve_limit": { "name": "แบตเตอรี่ถึงขีดจำกัดสำรอง" },
+      "solar_charge_only_limited": { "name": "จำกัดการชาร์จจากโซลาร์เท่านั้น" },
+      "backfeed_limited": { "name": "จำกัดการจ่ายไฟย้อนกลับ" },
+      "site_min_power_limited": { "name": "จำกัดกำลังไฟขั้นต่ำของไซต์" }
     },
     "number": {
       "battery_reserve": { "name": "สำรองแบตเตอรี่" }

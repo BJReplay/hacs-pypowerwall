@@ -156,12 +156,22 @@
       "alert_count": { "name": "Alerta aktiboak" },
       "firmware_version": { "name": "Firmware bertsioa" },
       "uptime": { "name": "Funtzionamendu-denbora" },
+      "tariff_name": { "name": "Tarifaren izena" },
+      "tariff_utility": { "name": "Tarifaren hornitzailea" },
+      "tariff_code": { "name": "Tarifaren kodea" },
       "battery_temp": { "name": "{device} tenperatura" },
       "fan_speed": { "name": "{device} haizagailua {fan} abiadura" },
       "fan_duty": { "name": "{device} haizagailua {fan} lan-zikloa" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Sarera konektatuta" }
+      "grid_connected": { "name": "Sarera konektatuta" },
+      "battery_calibration": { "name": "Bateriaren kalibrazioa" },
+      "battery_fault": { "name": "Bateriaren akatsa" },
+      "grid_manually_disconnected": { "name": "Eskuz sareatik deskonektatuta" },
+      "self_consumption_reserve_limit": { "name": "Bateria erreserba-mugan" },
+      "solar_charge_only_limited": { "name": "Eguzki-karga soilik mugatuta" },
+      "backfeed_limited": { "name": "Atzera-elikadura mugatuta" },
+      "site_min_power_limited": { "name": "Instalazioaren gutxieneko potentzia mugatuta" }
     },
     "number": {
       "battery_reserve": { "name": "Bateria-erreserba" }

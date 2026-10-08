@@ -156,12 +156,22 @@
       "alert_count": { "name": "Активни предупредувања" },
       "firmware_version": { "name": "Верзија на фирмверот" },
       "uptime": { "name": "Времетраење на работа" },
+      "tariff_name": { "name": "Име на тарифата" },
+      "tariff_utility": { "name": "Давател на тарифата" },
+      "tariff_code": { "name": "Код на тарифата" },
       "battery_temp": { "name": "Температура на {device}" },
       "fan_speed": { "name": "Брзина на вентилатор {fan} на {device}" },
       "fan_duty": { "name": "Работен циклус на вентилатор {fan} на {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Поврзано на мрежа" }
+      "grid_connected": { "name": "Поврзано на мрежа" },
+      "battery_calibration": { "name": "Калибрација на батеријата" },
+      "battery_fault": { "name": "Дефект на батеријата" },
+      "grid_manually_disconnected": { "name": "Рачно исклучено од мрежата" },
+      "self_consumption_reserve_limit": { "name": "Батеријата е на границата на резерва" },
+      "solar_charge_only_limited": { "name": "Ограничено полнење само од сонце" },
+      "backfeed_limited": { "name": "Ограничено враќање во мрежата" },
+      "site_min_power_limited": { "name": "Ограничена минимална моќност на објектот" }
     },
     "number": {
       "battery_reserve": { "name": "Резерва на батеријата" }

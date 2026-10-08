@@ -156,12 +156,22 @@
       "alert_count": { "name": "作用中警示" },
       "firmware_version": { "name": "韌體版本" },
       "uptime": { "name": "運行時間" },
+      "tariff_name": { "name": "電價方案名稱" },
+      "tariff_utility": { "name": "電價方案電力公司" },
+      "tariff_code": { "name": "電價方案代碼" },
       "battery_temp": { "name": "{device} 溫度" },
       "fan_speed": { "name": "{device} 風扇 {fan} 轉速" },
       "fan_duty": { "name": "{device} 風扇 {fan} 工作週期" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "電網連接" }
+      "grid_connected": { "name": "電網連接" },
+      "battery_calibration": { "name": "電池校準" },
+      "battery_fault": { "name": "電池故障" },
+      "grid_manually_disconnected": { "name": "已手動中斷電網連接" },
+      "self_consumption_reserve_limit": { "name": "電池處於備用電量限制" },
+      "solar_charge_only_limited": { "name": "僅太陽能充電受限" },
+      "backfeed_limited": { "name": "回饋電網受限" },
+      "site_min_power_limited": { "name": "站點最低功率受限" }
     },
     "number": {
       "battery_reserve": { "name": "電池保留電量" }

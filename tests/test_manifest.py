@@ -56,7 +56,11 @@ def test_pypowerwall_doc_links_are_pinned_to_the_manifest_version():
     pin = _manifest_pypowerwall_version()
     pattern = re.compile(r"github\.com/jasonacox/pypowerwall/blob/([^/\s)]+)/")
     stale = {}
-    for path in (ROOT_DIR / "README.md", ROOT_DIR / "AGENTS.md"):
+    for path in (
+        ROOT_DIR / "README.md",
+        ROOT_DIR / "AGENTS.md",
+        *sorted((ROOT_DIR / "docs").glob("*.md")),
+    ):
         for tag in pattern.findall(path.read_text(encoding="utf-8")):
             if tag != f"v{pin}":
                 stale.setdefault(path.name, set()).add(tag)

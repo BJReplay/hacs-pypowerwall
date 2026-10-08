@@ -156,12 +156,22 @@
       "alert_count": { "name": "Rhybuddion gweithredol" },
       "firmware_version": { "name": "Fersiwn cadarnwedd" },
       "uptime": { "name": "Amser ar waith" },
+      "tariff_name": { "name": "Enw'r tariff" },
+      "tariff_utility": { "name": "Cyfleustod y tariff" },
+      "tariff_code": { "name": "Cod y tariff" },
       "battery_temp": { "name": "Tymheredd {device}" },
       "fan_speed": { "name": "Cyflymder ffan {fan} {device}" },
       "fan_duty": { "name": "Cylchred ddyletswydd ffan {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Wedi cysylltu â'r grid" }
+      "grid_connected": { "name": "Wedi cysylltu â'r grid" },
+      "battery_calibration": { "name": "Calibradu'r batri" },
+      "battery_fault": { "name": "Nam batri" },
+      "grid_manually_disconnected": { "name": "Wedi datgysylltu o'r grid â llaw" },
+      "self_consumption_reserve_limit": { "name": "Batri ar y terfyn wrth gefn" },
+      "solar_charge_only_limited": { "name": "Gwefru solar yn unig wedi'i gyfyngu" },
+      "backfeed_limited": { "name": "Porthiant gwrthol wedi'i gyfyngu" },
+      "site_min_power_limited": { "name": "Pŵer lleiaf y safle wedi'i gyfyngu" }
     },
     "number": {
       "battery_reserve": { "name": "Cronfa wrth gefn y batri" }

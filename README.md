@@ -70,7 +70,14 @@ The integration ships a translation file for every language Home Assistant suppo
 | Home power | sensor | W |
 | Grid status | sensor | `UP` / `DOWN` / `SYNCING` |
 | Grid connected | binary_sensor | connectivity, derived from grid status |
-| Active alerts | sensor | count of active alerts; the alert names (e.g. `GridCodesWrite`) are in the `alerts` attribute, sorted, for templates and automations |
+| Battery calibration | binary_sensor | **⚠️ Disabled by default.** Diagnostic, on while the gateway reports the `BatteryCalibration` alert (see [`docs/alerts.md`](./docs/alerts.md)). |
+| Battery fault | binary_sensor | **⚠️ Disabled by default.** Diagnostic, `problem` class, on while the gateway reports the `BatteryFault` alert (one or more inverter blocks faulted). |
+| Manually disconnected from grid | binary_sensor | **⚠️ Disabled by default.** Diagnostic, on while the gateway reports `ScheduledIslandContactorOpen`, which separates a deliberate disconnect from a grid outage. |
+| Battery at reserve limit | binary_sensor | **⚠️ Disabled by default.** Diagnostic, on while the gateway reports `SelfConsumptionReservedLimit` (the battery reached its reserve limit in self-consumption mode and the home switched to the grid). |
+| Solar charge only limited | binary_sensor | **⚠️ Disabled by default.** Diagnostic, on while the gateway reports `SolarChargeOnlyLimited` (the system is set to charge only from solar and solar isn't available). |
+| Backfeed limited | binary_sensor | **⚠️ Disabled by default.** Diagnostic, on while the gateway reports `BackfeedLimited` (the system is configured for inadvertent export and won't discharge further to respect that limit). |
+| Site minimum power limited | binary_sensor | **⚠️ Disabled by default.** Diagnostic, on while the gateway reports `SiteMinPowerLimited` (a command couldn't be met because the site minimum power limit is set). |
+| Active alerts | sensor | count of active alerts; the alert names (e.g. `GridCodesWrite`) are in the `alerts` attribute, sorted, for templates and automations; see [`docs/alerts.md`](./docs/alerts.md) for what the known alerts mean |
 | Firmware version | sensor | diagnostic |
 | Uptime | sensor | diagnostic, seconds |
 | Tariff name, utility, code | sensor | diagnostic, the site's utility tariff from `get_tariff()` ([fields](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/API.md#tesla-tariff-and-time-of-use-settings)). **Cloud and FleetAPI modes only.** |

@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktive varsler" },
       "firmware_version": { "name": "Fastvareversjon" },
       "uptime": { "name": "Oppetid" },
+      "tariff_name": { "name": "Tariffnavn" },
+      "tariff_utility": { "name": "Tariffselskap" },
+      "tariff_code": { "name": "Tariffkode" },
       "battery_temp": { "name": "{device}-temperatur" },
       "fan_speed": { "name": "{device}-vifte {fan} hastighet" },
       "fan_duty": { "name": "{device}-vifte {fan} driftssyklus" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Tilkoblet nettet" }
+      "grid_connected": { "name": "Tilkoblet nettet" },
+      "battery_calibration": { "name": "Batterikalibrering" },
+      "battery_fault": { "name": "Batterifeil" },
+      "grid_manually_disconnected": { "name": "Manuelt koblet fra nettet" },
+      "self_consumption_reserve_limit": { "name": "Batteri ved reservegrense" },
+      "solar_charge_only_limited": { "name": "Kun solladning begrenset" },
+      "backfeed_limited": { "name": "Tilbakemating begrenset" },
+      "site_min_power_limited": { "name": "Anleggets minimumseffekt begrenset" }
     },
     "number": {
       "battery_reserve": { "name": "Batterireserve" }

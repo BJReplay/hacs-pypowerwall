@@ -156,12 +156,22 @@
       "alert_count": { "name": "აქტიური გაფრთხილებები" },
       "firmware_version": { "name": "მიკროპროგრამის ვერსია" },
       "uptime": { "name": "მუშაობის ხანგრძლივობა" },
+      "tariff_name": { "name": "ტარიფის სახელი" },
+      "tariff_utility": { "name": "ტარიფის კომუნალური კომპანია" },
+      "tariff_code": { "name": "ტარიფის კოდი" },
       "battery_temp": { "name": "{device}-ის ტემპერატურა" },
       "fan_speed": { "name": "{device}-ის ვენტილატორი {fan} სიჩქარე" },
       "fan_duty": { "name": "{device}-ის ვენტილატორი {fan} სამუშაო ციკლი" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "ქსელთან დაკავშირებული" }
+      "grid_connected": { "name": "ქსელთან დაკავშირებული" },
+      "battery_calibration": { "name": "ბატარეის კალიბრაცია" },
+      "battery_fault": { "name": "ბატარეის გაუმართაობა" },
+      "grid_manually_disconnected": { "name": "ხელით გამორთულია ქსელიდან" },
+      "self_consumption_reserve_limit": { "name": "ბატარეა სარეზერვო ზღვარზეა" },
+      "solar_charge_only_limited": { "name": "მხოლოდ მზით დატენვა შეზღუდულია" },
+      "backfeed_limited": { "name": "უკუმიწოდება შეზღუდულია" },
+      "site_min_power_limited": { "name": "ობიექტის მინიმალური სიმძლავრე შეზღუდულია" }
     },
     "number": {
       "battery_reserve": { "name": "ბატარეის რეზერვი" }

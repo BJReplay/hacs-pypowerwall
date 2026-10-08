@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktywne alerty" },
       "firmware_version": { "name": "Wersja oprogramowania" },
       "uptime": { "name": "Czas pracy" },
+      "tariff_name": { "name": "Nazwa taryfy" },
+      "tariff_utility": { "name": "Dostawca taryfy" },
+      "tariff_code": { "name": "Kod taryfy" },
       "battery_temp": { "name": "Temperatura {device}" },
       "fan_speed": { "name": "Prędkość wentylatora {fan} {device}" },
       "fan_duty": { "name": "Wypełnienie wentylatora {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Połączenie z siecią" }
+      "grid_connected": { "name": "Połączenie z siecią" },
+      "battery_calibration": { "name": "Kalibracja baterii" },
+      "battery_fault": { "name": "Awaria baterii" },
+      "grid_manually_disconnected": { "name": "Ręcznie odłączono od sieci" },
+      "self_consumption_reserve_limit": { "name": "Bateria na limicie rezerwy" },
+      "solar_charge_only_limited": { "name": "Ograniczone ładowanie wyłącznie ze słońca" },
+      "backfeed_limited": { "name": "Oddawanie do sieci ograniczone" },
+      "site_min_power_limited": { "name": "Minimalna moc obiektu ograniczona" }
     },
     "number": {
       "battery_reserve": { "name": "Rezerwa baterii" }
