@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.9.0](https://github.com/jackrayner/hacs-pypowerwall/compare/0.8.0...0.9.0) (2026-10-08)
+
+
+### Features
+
+* add read-only tariff sensors for Cloud and FleetAPI ([7204501](https://github.com/jackrayner/hacs-pypowerwall/commit/72045014d5148f2a8675fb63786ef07d6af69927))
+* add read-only tariff sensors for Cloud and FleetAPI modes ([ea44fc8](https://github.com/jackrayner/hacs-pypowerwall/commit/ea44fc8fb133468dbfc646b6157a0f1fa193c22a))
+* bump pypowerwall to 0.18.2 and add Powerwall 3 fan sensors ([5ca73f1](https://github.com/jackrayner/hacs-pypowerwall/commit/5ca73f1a29c7a0b0d5e47e7bbb8ac79bb5785e97))
+* bump pypowerwall to 0.18.2 and add Powerwall 3 fan sensors ([99286b4](https://github.com/jackrayner/hacs-pypowerwall/commit/99286b423f0e22a413deae3197cc31b78497c5d9))
+* **i18n:** translate the fan sensor names into all locales ([5386001](https://github.com/jackrayner/hacs-pypowerwall/commit/538600123245766500db1938cec990a0771db88e))
+
 ## [0.8.0](https://github.com/jackrayner/hacs-pypowerwall/compare/0.7.0...0.8.0) (2026-09-13)
 
 
