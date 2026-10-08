@@ -104,3 +104,28 @@ class TestFanSensor:
     def test_missing_device_is_none(self):
         s = self._sensor("PCH_FanDuty_A", {})
         assert s.native_value is None
+
+
+class TestAlertAttributes:
+    def _sensor(self, key, alerts):
+        from unittest.mock import MagicMock
+
+        from custom_components.pypowerwall.sensor import SENSOR_DESCRIPTIONS, PowerwallSensor
+
+        description = next(d for d in SENSOR_DESCRIPTIONS if d.key == key)
+        coordinator = MagicMock()
+        coordinator.data = PowerwallData(din="DIN1", alerts=alerts)
+        return PowerwallSensor(coordinator, description)
+
+    def test_alert_names_exposed_as_attribute(self):
+        s = self._sensor("alert_count", ["GridCodesWrite", "PodCommissionTime"])
+        assert s.native_value == 2
+        assert s.extra_state_attributes == {"alerts": ["GridCodesWrite", "PodCommissionTime"]}
+
+    def test_no_alerts_gives_empty_list(self):
+        s = self._sensor("alert_count", [])
+        assert s.native_value == 0
+        assert s.extra_state_attributes == {"alerts": []}
+
+    def test_other_sensors_have_no_attributes(self):
+        assert self._sensor("firmware_version", []).extra_state_attributes is None
