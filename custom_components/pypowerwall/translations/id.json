@@ -156,7 +156,9 @@
       "alert_count": { "name": "Peringatan aktif" },
       "firmware_version": { "name": "Versi firmware" },
       "uptime": { "name": "Waktu aktif" },
-      "battery_temp": { "name": "Suhu {device}" }
+      "battery_temp": { "name": "Suhu {device}" },
+      "fan_speed": { "name": "Kecepatan kipas {fan} {device}" },
+      "fan_duty": { "name": "Siklus kerja kipas {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Terhubung ke jaringan listrik" }

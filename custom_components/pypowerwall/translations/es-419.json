@@ -156,7 +156,9 @@
       "alert_count": { "name": "Alertas activas" },
       "firmware_version": { "name": "Versión del firmware" },
       "uptime": { "name": "Tiempo de actividad" },
-      "battery_temp": { "name": "Temperatura de {device}" }
+      "battery_temp": { "name": "Temperatura de {device}" },
+      "fan_speed": { "name": "Velocidad del ventilador {fan} de {device}" },
+      "fan_duty": { "name": "Ciclo de trabajo del ventilador {fan} de {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Conectado a la red" }

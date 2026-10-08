@@ -156,7 +156,9 @@
       "alert_count": { "name": "Alarme aktive" },
       "firmware_version": { "name": "Versioni i firmware-it" },
       "uptime": { "name": "Koha e funksionimit" },
-      "battery_temp": { "name": "Temperatura e {device}" }
+      "battery_temp": { "name": "Temperatura e {device}" },
+      "fan_speed": { "name": "Shpejtësia e ventilatorit {fan} e {device}" },
+      "fan_duty": { "name": "Cikli i punës i ventilatorit {fan} e {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Lidhur me rrjetin" }

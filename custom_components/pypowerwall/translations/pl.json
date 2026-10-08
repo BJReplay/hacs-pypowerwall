@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktywne alerty" },
       "firmware_version": { "name": "Wersja oprogramowania" },
       "uptime": { "name": "Czas pracy" },
-      "battery_temp": { "name": "Temperatura {device}" }
+      "battery_temp": { "name": "Temperatura {device}" },
+      "fan_speed": { "name": "Prędkość wentylatora {fan} {device}" },
+      "fan_duty": { "name": "Wypełnienie wentylatora {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Połączenie z siecią" }

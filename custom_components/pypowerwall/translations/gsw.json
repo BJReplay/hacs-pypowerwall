@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktivi Warnigä" },
       "firmware_version": { "name": "Firmware-Version" },
       "uptime": { "name": "Laufzit" },
-      "battery_temp": { "name": "{device} Temperatur" }
+      "battery_temp": { "name": "{device} Temperatur" },
+      "fan_speed": { "name": "{device} Lüfter {fan} Drehzahl" },
+      "fan_duty": { "name": "{device} Lüfter {fan} Tastgrad" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Mit em Netz verbunde" }

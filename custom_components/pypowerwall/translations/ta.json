@@ -156,7 +156,9 @@
       "alert_count": { "name": "செயலில் உள்ள எச்சரிக்கைகள்" },
       "firmware_version": { "name": "ஃபார்ம்வேர் பதிப்பு" },
       "uptime": { "name": "இயங்கிய நேரம்" },
-      "battery_temp": { "name": "{device} வெப்பநிலை" }
+      "battery_temp": { "name": "{device} வெப்பநிலை" },
+      "fan_speed": { "name": "{device} மின்விசிறி {fan} வேகம்" },
+      "fan_duty": { "name": "{device} மின்விசிறி {fan} கடமை சுழற்சி" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "கிரிட் இணைக்கப்பட்டுள்ளது" }

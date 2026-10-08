@@ -14,6 +14,7 @@ from homeassistant.components.sensor import (
 )
 from homeassistant.const import (
     PERCENTAGE,
+    REVOLUTIONS_PER_MINUTE,
     EntityCategory,
     UnitOfEnergy,
     UnitOfPower,
@@ -26,7 +27,8 @@ from homeassistant.helpers.restore_state import RestoreEntity
 from homeassistant.util import dt as dt_util
 
 from . import PypowerwallConfigEntry
-from .coordinator import PowerwallData, PowerwallDataUpdateCoordinator
+from .const import CONF_CONN_TYPE, TARIFF_CONN_TYPES
+from .coordinator import FAN_SIGNALS, PowerwallData, PowerwallDataUpdateCoordinator
 from .entity import PowerwallEntity
 
 
@@ -236,6 +238,17 @@ ENERGY_INTEGRATION_SENSORS: tuple[tuple[str, str, Callable[[PowerwallData], floa
 )
 
 
+TARIFF_SENSOR_DESCRIPTIONS: tuple[PowerwallSensorDescription, ...] = tuple(
+    PowerwallSensorDescription(
+        key=key,
+        translation_key=key,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        value_fn=lambda data, key=key: getattr(data, key),
+    )
+    for key in ("tariff_name", "tariff_utility", "tariff_code")
+)
+
+
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: PypowerwallConfigEntry,
@@ -247,6 +260,11 @@ async def async_setup_entry(
     async_add_entities(
         PowerwallSensor(coordinator, description) for description in SENSOR_DESCRIPTIONS
     )
+
+    if entry.data[CONF_CONN_TYPE] in TARIFF_CONN_TYPES:
+        async_add_entities(
+            PowerwallSensor(coordinator, description) for description in TARIFF_SENSOR_DESCRIPTIONS
+        )
 
     async_add_entities(
         PowerwallEnergyIntegrationSensor(coordinator, source_fn, key, translation_key)
@@ -265,6 +283,25 @@ async def async_setup_entry(
 
     _add_new_temp_sensors()
     entry.async_on_unload(coordinator.async_add_listener(_add_new_temp_sensors))
+
+    known_fan_sensors: set[tuple[str, str]] = set()
+
+    @callback
+    def _add_new_fan_sensors() -> None:
+        new_fans = {
+            (device, signal)
+            for device, signals in coordinator.data.fans.items()
+            for signal in signals
+        } - known_fan_sensors
+        if not new_fans:
+            return
+        known_fan_sensors.update(new_fans)
+        async_add_entities(
+            PowerwallFanSensor(coordinator, device, signal) for device, signal in new_fans
+        )
+
+    _add_new_fan_sensors()
+    entry.async_on_unload(coordinator.async_add_listener(_add_new_fan_sensors))
 
 
 class PowerwallSensor(PowerwallEntity, SensorEntity):
@@ -305,6 +342,38 @@ class PowerwallTempSensor(PowerwallEntity, SensorEntity):
     @property
     def available(self) -> bool:
         return super().available and self._device in self.coordinator.data.temps
+
+
+class PowerwallFanSensor(PowerwallEntity, SensorEntity):
+    """A fan speed (RPM) or drive duty cycle (%) sensor for one Powerwall 3 inverter fan."""
+
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+    _attr_entity_registry_enabled_default = False
+    _attr_state_class = SensorStateClass.MEASUREMENT
+
+    def __init__(
+        self, coordinator: PowerwallDataUpdateCoordinator, device: str, signal: str
+    ) -> None:
+        super().__init__(coordinator)
+        if signal not in FAN_SIGNALS:
+            raise ValueError(f"Unknown fan signal: {signal}")
+        kind, fan = signal.removeprefix("PCH_Fan").split("_")
+        self._device = device
+        self._signal = signal
+        self._attr_unique_id = f"{self._din}_{signal}_{device}"
+        self._attr_translation_key = "fan_speed" if kind == "Speed" else "fan_duty"
+        self._attr_translation_placeholders = {"device": device, "fan": fan}
+        self._attr_native_unit_of_measurement = (
+            REVOLUTIONS_PER_MINUTE if kind == "Speed" else PERCENTAGE
+        )
+
+    @property
+    def native_value(self):
+        return self.coordinator.data.fans.get(self._device, {}).get(self._signal)
+
+    @property
+    def available(self) -> bool:
+        return super().available and self._device in self.coordinator.data.fans
 
 
 class PowerwallEnergyIntegrationSensor(PowerwallEntity, RestoreEntity, SensorEntity):

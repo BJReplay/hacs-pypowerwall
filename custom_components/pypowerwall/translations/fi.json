@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktiiviset hälytykset" },
       "firmware_version": { "name": "Laiteohjelmiston versio" },
       "uptime": { "name": "Käyntiaika" },
-      "battery_temp": { "name": "{device} lämpötila" }
+      "battery_temp": { "name": "{device} lämpötila" },
+      "fan_speed": { "name": "{device} tuuletin {fan} nopeus" },
+      "fan_duty": { "name": "{device} tuuletin {fan} käyttösuhde" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Yhdistetty sähköverkkoon" }

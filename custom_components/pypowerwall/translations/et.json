@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktiivsed hoiatused" },
       "firmware_version": { "name": "Püsivara versioon" },
       "uptime": { "name": "Tööaeg" },
-      "battery_temp": { "name": "{device} temperatuur" }
+      "battery_temp": { "name": "{device} temperatuur" },
+      "fan_speed": { "name": "{device} ventilaator {fan} kiirus" },
+      "fan_duty": { "name": "{device} ventilaator {fan} täitetegur" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Võrku ühendatud" }

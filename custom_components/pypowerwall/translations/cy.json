@@ -156,7 +156,9 @@
       "alert_count": { "name": "Rhybuddion gweithredol" },
       "firmware_version": { "name": "Fersiwn cadarnwedd" },
       "uptime": { "name": "Amser ar waith" },
-      "battery_temp": { "name": "Tymheredd {device}" }
+      "battery_temp": { "name": "Tymheredd {device}" },
+      "fan_speed": { "name": "Cyflymder ffan {fan} {device}" },
+      "fan_duty": { "name": "Cylchred ddyletswydd ffan {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Wedi cysylltu â'r grid" }

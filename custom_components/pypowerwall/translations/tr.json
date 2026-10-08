@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktif uyarılar" },
       "firmware_version": { "name": "Bellenim sürümü" },
       "uptime": { "name": "Çalışma süresi" },
-      "battery_temp": { "name": "{device} sıcaklığı" }
+      "battery_temp": { "name": "{device} sıcaklığı" },
+      "fan_speed": { "name": "{device} fan {fan} hızı" },
+      "fan_duty": { "name": "{device} fan {fan} görev döngüsü" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Şebekeye bağlı" }

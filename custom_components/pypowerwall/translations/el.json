@@ -156,7 +156,9 @@
       "alert_count": { "name": "Ενεργές ειδοποιήσεις" },
       "firmware_version": { "name": "Έκδοση firmware" },
       "uptime": { "name": "Χρόνος λειτουργίας" },
-      "battery_temp": { "name": "Θερμοκρασία {device}" }
+      "battery_temp": { "name": "Θερμοκρασία {device}" },
+      "fan_speed": { "name": "Ταχύτητα ανεμιστήρα {fan} {device}" },
+      "fan_duty": { "name": "Κύκλος λειτουργίας ανεμιστήρα {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Συνδεδεμένο στο δίκτυο" }

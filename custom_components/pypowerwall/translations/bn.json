@@ -156,7 +156,9 @@
       "alert_count": { "name": "সক্রিয় সতর্কতা" },
       "firmware_version": { "name": "ফার্মওয়্যার ভার্সন" },
       "uptime": { "name": "আপটাইম" },
-      "battery_temp": { "name": "{device} তাপমাত্রা" }
+      "battery_temp": { "name": "{device} তাপমাত্রা" },
+      "fan_speed": { "name": "{device} ফ্যান {fan} গতি" },
+      "fan_duty": { "name": "{device} ফ্যান {fan} ডিউটি" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "গ্রিডের সাথে সংযুক্ত" }

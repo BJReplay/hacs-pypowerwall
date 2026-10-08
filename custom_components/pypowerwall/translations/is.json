@@ -156,7 +156,9 @@
       "alert_count": { "name": "Virkar viðvaranir" },
       "firmware_version": { "name": "Útgáfa fastbúnaðar" },
       "uptime": { "name": "Rekstrartími" },
-      "battery_temp": { "name": "Hitastig {device}" }
+      "battery_temp": { "name": "Hitastig {device}" },
+      "fan_speed": { "name": "Hraði viftu {fan} {device}" },
+      "fan_duty": { "name": "Vinnulota viftu {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Tengt við rafveitu" }

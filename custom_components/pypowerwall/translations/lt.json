@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktyvūs įspėjimai" },
       "firmware_version": { "name": "Aparatinės programinės įrangos versija" },
       "uptime": { "name": "Veikimo laikas" },
-      "battery_temp": { "name": "{device} temperatūra" }
+      "battery_temp": { "name": "{device} temperatūra" },
+      "fan_speed": { "name": "{device} ventiliatorius {fan} greitis" },
+      "fan_duty": { "name": "{device} ventiliatorius {fan} darbo ciklas" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Prijungta prie tinklo" }

@@ -156,7 +156,9 @@
       "alert_count": { "name": "有効なアラート数" },
       "firmware_version": { "name": "ファームウェアバージョン" },
       "uptime": { "name": "稼働時間" },
-      "battery_temp": { "name": "{device}の温度" }
+      "battery_temp": { "name": "{device}の温度" },
+      "fan_speed": { "name": "{device}のファン{fan}の速度" },
+      "fan_duty": { "name": "{device}のファン{fan}のデューティ比" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "系統接続" }

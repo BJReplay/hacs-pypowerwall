@@ -156,7 +156,9 @@
       "alert_count": { "name": "క్రియాశీల హెచ్చరికలు" },
       "firmware_version": { "name": "ఫర్మ్‌వేర్ వెర్షన్" },
       "uptime": { "name": "అప్‌టైమ్" },
-      "battery_temp": { "name": "{device} ఉష్ణోగ్రత" }
+      "battery_temp": { "name": "{device} ఉష్ణోగ్రత" },
+      "fan_speed": { "name": "{device} ఫ్యాన్ {fan} వేగం" },
+      "fan_duty": { "name": "{device} ఫ్యాన్ {fan} డ్యూటీ సైకిల్" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "గ్రిడ్‌కు కనెక్ట్ చేయబడింది" }

@@ -156,7 +156,9 @@
       "alert_count": { "name": "സജീവ അലേർട്ടുകൾ" },
       "firmware_version": { "name": "ഫേംവെയർ പതിപ്പ്" },
       "uptime": { "name": "അപ്ടൈം" },
-      "battery_temp": { "name": "{device} താപനില" }
+      "battery_temp": { "name": "{device} താപനില" },
+      "fan_speed": { "name": "{device} ഫാൻ {fan} വേഗത" },
+      "fan_duty": { "name": "{device} ഫാൻ {fan} ഡ്യൂട്ടി" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "ഗ്രിഡ് ബന്ധിപ്പിച്ചു" }

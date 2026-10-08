@@ -160,6 +160,32 @@ class TestFetchData:
         assert data.grid_export == "never"
 
 
+class TestTariff:
+    TARIFF = {"code": "SCE-TOU-PRIME", "name": "Time of Use Prime", "utility": "SCE"}
+
+    def test_polled_for_cloud_and_fleetapi(self):
+        for conn_type in (CONN_TYPE_CLOUD, CONN_TYPE_FLEETAPI):
+            pw = _make_pw()
+            pw.get_tariff.return_value = self.TARIFF
+            data = _fetch_data(pw, conn_type)
+            assert data.tariff_name == "Time of Use Prime"
+            assert data.tariff_utility == "SCE"
+            assert data.tariff_code == "SCE-TOU-PRIME"
+
+    def test_not_polled_for_tedapi(self):
+        pw = _make_pw()
+        data = _fetch_data(pw, CONN_TYPE_TEDAPI)
+        pw.get_tariff.assert_not_called()
+        assert data.tariff_name is None
+
+    def test_non_dict_tariff_leaves_fields_none(self):
+        pw = _make_pw()
+        pw.get_tariff.return_value = None
+        data = _fetch_data(pw, CONN_TYPE_CLOUD)
+        assert data.tariff_name is None
+        assert data.tariff_code is None
+
+
 class TestBuildPowerwallKwargs:
     def test_local(self):
         kwargs = build_powerwall_kwargs(
@@ -295,3 +321,34 @@ async def test_update_data_logs_exception_before_raising_update_failed(
     assert "Error communicating with Powerwall" in caplog.text
     assert "AttributeError" in caplog.text
     assert "has no attribute 'foo'" in caplog.text
+
+
+class TestExtractFans:
+    PW3_VITALS = {
+        "TEPINV--1707000-00-A--TG1": {
+            "PCH_FanSpeed_A": 1395,
+            "PCH_FanSpeed_B": 1397,
+            "PCH_FanDuty_A": 19.1,
+            "PCH_FanDuty_B": None,
+        },
+        "TEPOD--1707000-00-A--TG1": {"HVP_PackTempMax": 40.3},
+        "TEPINV--1707000-00-A--TG2": {"PCH_FanSpeed_A": None},
+    }
+
+    def test_only_inverters_with_fan_values_are_kept(self):
+        from custom_components.pypowerwall.coordinator import _extract_fans
+
+        assert _extract_fans(self.PW3_VITALS) == {
+            "TEPINV--1707000-00-A--TG1": {
+                "PCH_FanSpeed_A": 1395,
+                "PCH_FanSpeed_B": 1397,
+                "PCH_FanDuty_A": 19.1,
+                "PCH_FanDuty_B": None,
+            }
+        }
+
+    def test_non_dict_vitals_yield_empty(self):
+        from custom_components.pypowerwall.coordinator import _extract_fans
+
+        assert _extract_fans(None) == {}
+        assert _extract_fans("garbage") == {}
