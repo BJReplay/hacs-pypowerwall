@@ -22,7 +22,7 @@ There's no way to run this integration standalone outside Home Assistant — `co
 
 ### Windows, or a ready-made environment
 
-The tests can't run natively on Windows: `pytest-homeassistant-custom-component` imports Home Assistant's `runner.py`, which imports the POSIX-only `fcntl` module, and no pip install fixes that. On Windows use WSL2, or the Dev Container in [`.devcontainer/`](./.devcontainer/devcontainer.json): in VS Code, run "Dev Containers: Reopen in Container" (it needs Docker), or open the repo in GitHub Codespaces. It uses Python 3.14 (what CI runs) and installs `requirements-dev.txt` and `ruff` on creation, so `python -m pytest` and `ruff check .` work straight away.
+The tests can't run natively on Windows: `pytest-homeassistant-custom-component` imports Home Assistant's `runner.py`, which imports the POSIX-only `fcntl` module, and no pip install fixes that. On Windows use WSL2, or the Dev Container in [`.devcontainer/`](./.devcontainer/devcontainer.json): in VS Code, run "Dev Containers: Reopen in Container" (it needs Docker), or open the repo in GitHub Codespaces. It uses Python 3.14 (what CI runs) and installs `requirements-dev.txt`, `ruff` and `markdownlint-cli2` (via Node) on creation, so `python -m pytest`, `ruff check .` and the markdownlint step from `.github/workflows/lint.yml` work straight away.
 
 ## Running tests
 

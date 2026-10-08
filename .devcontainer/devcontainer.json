@@ -1,12 +1,13 @@
 {
   "name": "hacs-pypowerwall",
   "image": "python:3.14",
-  "postCreateCommand": "pip install -r requirements-dev.txt ruff",
+  "postCreateCommand": "pip install -r requirements-dev.txt ruff && npm install -g markdownlint-cli2",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "charliermarsh.ruff"
+        "charliermarsh.ruff",
+        "DavidAnson.vscode-markdownlint"
       ],
       "settings": {
         "python.testing.pytestEnabled": true,
@@ -20,7 +21,10 @@
     "ghcr.io/devcontainers/features/common-utils:2": {
       "username": "vscode"
     },
-    "ghcr.io/devcontainers/features/git:1": {}
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
   },
   "remoteUser": "vscode"
 }
