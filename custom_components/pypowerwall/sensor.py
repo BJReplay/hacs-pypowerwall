@@ -27,6 +27,7 @@ from homeassistant.helpers.restore_state import RestoreEntity
 from homeassistant.util import dt as dt_util
 
 from . import PypowerwallConfigEntry
+from .const import CONF_CONN_TYPE, TARIFF_CONN_TYPES
 from .coordinator import FAN_SIGNALS, PowerwallData, PowerwallDataUpdateCoordinator
 from .entity import PowerwallEntity
 
@@ -237,6 +238,17 @@ ENERGY_INTEGRATION_SENSORS: tuple[tuple[str, str, Callable[[PowerwallData], floa
 )
 
 
+TARIFF_SENSOR_DESCRIPTIONS: tuple[PowerwallSensorDescription, ...] = tuple(
+    PowerwallSensorDescription(
+        key=key,
+        translation_key=key,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        value_fn=lambda data, key=key: getattr(data, key),
+    )
+    for key in ("tariff_name", "tariff_utility", "tariff_code")
+)
+
+
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: PypowerwallConfigEntry,
@@ -248,6 +260,11 @@ async def async_setup_entry(
     async_add_entities(
         PowerwallSensor(coordinator, description) for description in SENSOR_DESCRIPTIONS
     )
+
+    if entry.data[CONF_CONN_TYPE] in TARIFF_CONN_TYPES:
+        async_add_entities(
+            PowerwallSensor(coordinator, description) for description in TARIFF_SENSOR_DESCRIPTIONS
+        )
 
     async_add_entities(
         PowerwallEnergyIntegrationSensor(coordinator, source_fn, key, translation_key)

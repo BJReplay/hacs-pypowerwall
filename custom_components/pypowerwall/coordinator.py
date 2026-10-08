@@ -32,6 +32,7 @@ from .const import (
     DOMAIN,
     GRID_CONTROL_CONN_TYPES,
     POWERWALL_REQUEST_TIMEOUT,
+    TARIFF_CONN_TYPES,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -63,6 +64,9 @@ class PowerwallData:
     temps: dict[str, float] = field(default_factory=dict)
     fans: dict[str, dict[str, float | None]] = field(default_factory=dict)
     alerts: list[str] = field(default_factory=list)
+    tariff_name: str | None = None
+    tariff_utility: str | None = None
+    tariff_code: str | None = None
 
 
 FAN_SIGNALS = ("PCH_FanSpeed_A", "PCH_FanSpeed_B", "PCH_FanDuty_A", "PCH_FanDuty_B")
@@ -132,6 +136,12 @@ def _fetch_data(pw: pypowerwall.Powerwall, conn_type: str | None = None) -> Powe
     if conn_type in GRID_CONTROL_CONN_TYPES:
         data.grid_charging = pw.get_grid_charging()
         data.grid_export = pw.get_grid_export()
+    if conn_type in TARIFF_CONN_TYPES:
+        tariff = pw.get_tariff()
+        if isinstance(tariff, dict):
+            data.tariff_name = tariff.get("name")
+            data.tariff_utility = tariff.get("utility")
+            data.tariff_code = tariff.get("code")
     return data
 
 
