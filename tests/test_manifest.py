@@ -47,3 +47,21 @@ def test_manifest_pypowerwall_version_matches_requirements_txt():
         f"{requirements_version!r}. Update manifest.json's requirements "
         "entry to match (Dependabot only bumps requirements.txt)."
     )
+
+
+def test_pypowerwall_doc_links_are_pinned_to_the_manifest_version():
+    """Links into pypowerwall's own docs must use the tag matching the pin, so
+    their section anchors are checked against the version users actually run
+    (see AGENTS.md's Conventions on keeping these links fresh)."""
+    pin = _manifest_pypowerwall_version()
+    pattern = re.compile(r"github\.com/jasonacox/pypowerwall/blob/([^/\s)]+)/")
+    stale = {}
+    for path in (ROOT_DIR / "README.md", ROOT_DIR / "AGENTS.md"):
+        for tag in pattern.findall(path.read_text(encoding="utf-8")):
+            if tag != f"v{pin}":
+                stale.setdefault(path.name, set()).add(tag)
+
+    assert not stale, (
+        f"pypowerwall doc links not pinned to v{pin}: {stale}. Update them to "
+        f"the new tag and re-check the anchors."
+    )
