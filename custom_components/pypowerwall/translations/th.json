@@ -156,7 +156,9 @@
       "alert_count": { "name": "การแจ้งเตือนที่ทำงานอยู่" },
       "firmware_version": { "name": "เวอร์ชันเฟิร์มแวร์" },
       "uptime": { "name": "เวลาทำงานต่อเนื่อง" },
-      "battery_temp": { "name": "อุณหภูมิ {device}" }
+      "battery_temp": { "name": "อุณหภูมิ {device}" },
+      "fan_speed": { "name": "ความเร็วพัดลม {fan} ของ {device}" },
+      "fan_duty": { "name": "ดิวตี้ไซเคิลพัดลม {fan} ของ {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "เชื่อมต่อกับกริด" }

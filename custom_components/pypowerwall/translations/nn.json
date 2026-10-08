@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktive varsel" },
       "firmware_version": { "name": "Fastvareversjon" },
       "uptime": { "name": "Oppetid" },
-      "battery_temp": { "name": "{device}-temperatur" }
+      "battery_temp": { "name": "{device}-temperatur" },
+      "fan_speed": { "name": "{device}-vifte {fan} fart" },
+      "fan_duty": { "name": "{device}-vifte {fan} driftssyklus" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Tilkopla straumnettet" }

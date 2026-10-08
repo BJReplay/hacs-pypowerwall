@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktivaj avertoj" },
       "firmware_version": { "name": "Versio de la mikroprogramaro" },
       "uptime": { "name": "Funkcia tempo" },
-      "battery_temp": { "name": "Temperaturo de {device}" }
+      "battery_temp": { "name": "Temperaturo de {device}" },
+      "fan_speed": { "name": "Rapido de ventolilo {fan} de {device}" },
+      "fan_duty": { "name": "Labortempo de ventolilo {fan} de {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Konektita al la reto" }

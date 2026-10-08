@@ -156,7 +156,9 @@
       "alert_count": { "name": "Активни сигнали" },
       "firmware_version": { "name": "Версия на фърмуера" },
       "uptime": { "name": "Време на работа" },
-      "battery_temp": { "name": "Температура на {device}" }
+      "battery_temp": { "name": "Температура на {device}" },
+      "fan_speed": { "name": "Скорост на вентилатор {fan} на {device}" },
+      "fan_duty": { "name": "Запълване на вентилатор {fan} на {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Свързан към мрежата" }

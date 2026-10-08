@@ -156,7 +156,9 @@
       "alert_count": { "name": "作用中警示" },
       "firmware_version": { "name": "韌體版本" },
       "uptime": { "name": "運行時間" },
-      "battery_temp": { "name": "{device} 溫度" }
+      "battery_temp": { "name": "{device} 溫度" },
+      "fan_speed": { "name": "{device} 風扇 {fan} 轉速" },
+      "fan_duty": { "name": "{device} 風扇 {fan} 工作週期" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "電網連接" }

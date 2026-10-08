@@ -156,7 +156,9 @@
       "alert_count": { "name": "Alerte active" },
       "firmware_version": { "name": "Versiune firmware" },
       "uptime": { "name": "Timp de funcționare" },
-      "battery_temp": { "name": "Temperatură {device}" }
+      "battery_temp": { "name": "Temperatură {device}" },
+      "fan_speed": { "name": "Viteza ventilatorului {fan} {device}" },
+      "fan_duty": { "name": "Ciclu de lucru ventilator {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Conectat la rețea" }

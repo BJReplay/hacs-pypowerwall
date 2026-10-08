@@ -156,7 +156,9 @@
       "alert_count": { "name": "აქტიური გაფრთხილებები" },
       "firmware_version": { "name": "მიკროპროგრამის ვერსია" },
       "uptime": { "name": "მუშაობის ხანგრძლივობა" },
-      "battery_temp": { "name": "{device}-ის ტემპერატურა" }
+      "battery_temp": { "name": "{device}-ის ტემპერატურა" },
+      "fan_speed": { "name": "{device}-ის ვენტილატორი {fan} სიჩქარე" },
+      "fan_duty": { "name": "{device}-ის ვენტილატორი {fan} სამუშაო ციკლი" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "ქსელთან დაკავშირებული" }

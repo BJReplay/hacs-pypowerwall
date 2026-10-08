@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktivna opozorila" },
       "firmware_version": { "name": "Različica vdelane programske opreme" },
       "uptime": { "name": "Čas delovanja" },
-      "battery_temp": { "name": "Temperatura {device}" }
+      "battery_temp": { "name": "Temperatura {device}" },
+      "fan_speed": { "name": "Hitrost ventilatorja {fan} {device}" },
+      "fan_duty": { "name": "Delovni cikel ventilatorja {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Povezan z omrežjem" }

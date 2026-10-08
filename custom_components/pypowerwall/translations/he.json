@@ -156,7 +156,9 @@
       "alert_count": { "name": "התראות פעילות" },
       "firmware_version": { "name": "גרסת קושחה" },
       "uptime": { "name": "זמן פעילות" },
-      "battery_temp": { "name": "טמפרטורת {device}" }
+      "battery_temp": { "name": "טמפרטורת {device}" },
+      "fan_speed": { "name": "מהירות מאוורר {fan} של {device}" },
+      "fan_duty": { "name": "מחזור עבודה של מאוורר {fan} של {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "מחובר לרשת" }

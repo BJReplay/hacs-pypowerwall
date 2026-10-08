@@ -156,7 +156,9 @@
       "alert_count": { "name": "هشدارهای فعال" },
       "firmware_version": { "name": "نسخه فریمور" },
       "uptime": { "name": "مدت‌زمان روشن بودن" },
-      "battery_temp": { "name": "دمای {device}" }
+      "battery_temp": { "name": "دمای {device}" },
+      "fan_speed": { "name": "سرعت فن {fan} {device}" },
+      "fan_duty": { "name": "چرخه وظیفه فن {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "اتصال به شبکه برق" }

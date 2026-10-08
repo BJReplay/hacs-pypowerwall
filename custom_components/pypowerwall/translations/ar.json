@@ -156,7 +156,9 @@
       "alert_count": { "name": "التنبيهات النشطة" },
       "firmware_version": { "name": "إصدار البرنامج الثابت" },
       "uptime": { "name": "مدة التشغيل" },
-      "battery_temp": { "name": "درجة حرارة {device}" }
+      "battery_temp": { "name": "درجة حرارة {device}" },
+      "fan_speed": { "name": "سرعة المروحة {fan} في {device}" },
+      "fan_duty": { "name": "دورة تشغيل المروحة {fan} في {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "متصل بالشبكة" }

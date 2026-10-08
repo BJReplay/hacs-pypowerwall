@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktiewe waarskuwings" },
       "firmware_version": { "name": "Firmware-weergawe" },
       "uptime": { "name": "Bedryfstyd" },
-      "battery_temp": { "name": "{device} temperatuur" }
+      "battery_temp": { "name": "{device} temperatuur" },
+      "fan_speed": { "name": "{device} waaier {fan} spoed" },
+      "fan_duty": { "name": "{device} waaier {fan} werksiklus" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Aan die net gekoppel" }

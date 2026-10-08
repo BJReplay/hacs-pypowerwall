@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktív riasztások" },
       "firmware_version": { "name": "Firmware verzió" },
       "uptime": { "name": "Üzemidő" },
-      "battery_temp": { "name": "{device} hőmérséklete" }
+      "battery_temp": { "name": "{device} hőmérséklete" },
+      "fan_speed": { "name": "{device} {fan}. ventilátorának sebessége" },
+      "fan_duty": { "name": "{device} {fan}. ventilátorának kitöltési tényezője" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Hálózatra csatlakozva" }

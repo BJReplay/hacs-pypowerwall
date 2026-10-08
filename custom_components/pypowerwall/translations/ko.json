@@ -156,7 +156,9 @@
       "alert_count": { "name": "활성 경고" },
       "firmware_version": { "name": "펌웨어 버전" },
       "uptime": { "name": "가동 시간" },
-      "battery_temp": { "name": "{device} 온도" }
+      "battery_temp": { "name": "{device} 온도" },
+      "fan_speed": { "name": "{device} 팬 {fan} 속도" },
+      "fan_duty": { "name": "{device} 팬 {fan} 듀티" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "전력망 연결됨" }

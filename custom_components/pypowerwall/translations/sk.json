@@ -156,7 +156,9 @@
       "alert_count": { "name": "Aktívne upozornenia" },
       "firmware_version": { "name": "Verzia firmvéru" },
       "uptime": { "name": "Doba prevádzky" },
-      "battery_temp": { "name": "Teplota {device}" }
+      "battery_temp": { "name": "Teplota {device}" },
+      "fan_speed": { "name": "Rýchlosť ventilátora {fan} {device}" },
+      "fan_duty": { "name": "Plnenie ventilátora {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Pripojené k sieti" }

@@ -156,7 +156,9 @@
       "alert_count": { "name": "当前告警数" },
       "firmware_version": { "name": "固件版本" },
       "uptime": { "name": "运行时间" },
-      "battery_temp": { "name": "{device}温度" }
+      "battery_temp": { "name": "{device}温度" },
+      "fan_speed": { "name": "{device}风扇{fan}转速" },
+      "fan_duty": { "name": "{device}风扇{fan}占空比" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "电网已连接" }

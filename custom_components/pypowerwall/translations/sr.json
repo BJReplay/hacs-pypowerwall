@@ -156,7 +156,9 @@
       "alert_count": { "name": "Активна упозорења" },
       "firmware_version": { "name": "Верзија фирмвера" },
       "uptime": { "name": "Време рада" },
-      "battery_temp": { "name": "Температура {device}" }
+      "battery_temp": { "name": "Температура {device}" },
+      "fan_speed": { "name": "Брзина вентилатора {fan} ({device})" },
+      "fan_duty": { "name": "Радни циклус вентилатора {fan} ({device})" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Повезано на мрежу" }

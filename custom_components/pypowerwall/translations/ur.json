@@ -156,7 +156,9 @@
       "alert_count": { "name": "فعال الرٹس" },
       "firmware_version": { "name": "فرم ویئر ورژن" },
       "uptime": { "name": "اپ ٹائم" },
-      "battery_temp": { "name": "{device} کا درجہ حرارت" }
+      "battery_temp": { "name": "{device} کا درجہ حرارت" },
+      "fan_speed": { "name": "{device} پنکھا {fan} کی رفتار" },
+      "fan_duty": { "name": "{device} پنکھا {fan} کا ڈیوٹی سائیکل" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "گرڈ سے منسلک" }

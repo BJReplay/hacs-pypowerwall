@@ -156,7 +156,9 @@
       "alert_count": { "name": "Активні сповіщення" },
       "firmware_version": { "name": "Версія прошивки" },
       "uptime": { "name": "Час роботи" },
-      "battery_temp": { "name": "Температура {device}" }
+      "battery_temp": { "name": "Температура {device}" },
+      "fan_speed": { "name": "Швидкість вентилятора {fan} {device}" },
+      "fan_duty": { "name": "Заповнення ШІМ вентилятора {fan} {device}" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Підключення до мережі" }
