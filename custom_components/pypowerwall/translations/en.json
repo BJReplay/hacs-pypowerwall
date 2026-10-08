@@ -165,7 +165,13 @@
     },
     "binary_sensor": {
       "grid_connected": { "name": "Grid connected" },
-      "battery_calibration": { "name": "Battery calibration" }
+      "battery_calibration": { "name": "Battery calibration" },
+      "battery_fault": { "name": "Battery fault" },
+      "grid_manually_disconnected": { "name": "Manually disconnected from grid" },
+      "self_consumption_reserve_limit": { "name": "Battery at reserve limit" },
+      "solar_charge_only_limited": { "name": "Solar charge only limited" },
+      "backfeed_limited": { "name": "Backfeed limited" },
+      "site_min_power_limited": { "name": "Site minimum power limited" }
     },
     "number": {
       "battery_reserve": { "name": "Battery reserve" }

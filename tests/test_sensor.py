@@ -131,24 +131,52 @@ class TestAlertAttributes:
         assert self._sensor("firmware_version", []).extra_state_attributes is None
 
 
-class TestBatteryCalibrationBinarySensor:
-    def _sensor(self, alerts):
+class TestAlertBinarySensors:
+    CASES = [
+        ("battery_calibration", "BatteryCalibration", None),
+        ("battery_fault", "BatteryFault", "problem"),
+        ("grid_manually_disconnected", "ScheduledIslandContactorOpen", "none"),
+        ("self_consumption_reserve_limit", "SelfConsumptionReservedLimit", None),
+        ("solar_charge_only_limited", "SolarChargeOnlyLimited", None),
+        ("backfeed_limited", "BackfeedLimited", None),
+        ("site_min_power_limited", "SiteMinPowerLimited", None),
+    ]
+
+    def _sensor(self, key, alerts):
         from unittest.mock import MagicMock
 
         from custom_components.pypowerwall.binary_sensor import (
-            PowerwallBatteryCalibrationBinarySensor,
+            ALERT_BINARY_SENSOR_DESCRIPTIONS,
+            PowerwallAlertBinarySensor,
         )
 
+        description = next(d for d in ALERT_BINARY_SENSOR_DESCRIPTIONS if d.key == key)
         coordinator = MagicMock()
         coordinator.data = PowerwallData(din="DIN1", alerts=alerts)
-        return PowerwallBatteryCalibrationBinarySensor(coordinator)
+        return PowerwallAlertBinarySensor(coordinator, description)
 
-    def test_on_while_the_alert_is_active(self):
-        assert self._sensor(["BatteryCalibration", "GridCodesWrite"]).is_on is True
+    def test_on_only_while_its_alert_is_active(self):
+        for key, alert, _ in self.CASES:
+            assert self._sensor(key, [alert, "GridCodesWrite"]).is_on is True
+            assert self._sensor(key, ["GridCodesWrite"]).is_on is False
+            assert self._sensor(key, []).is_on is False
 
-    def test_off_otherwise(self):
-        assert self._sensor(["GridCodesWrite"]).is_on is False
-        assert self._sensor([]).is_on is False
+    def test_each_sensor_ignores_the_others_alerts(self):
+        others = [alert for _, alert, _ in self.CASES]
+        assert (
+            self._sensor("battery_fault", [a for a in others if a != "BatteryFault"]).is_on is False
+        )
 
-    def test_disabled_by_default(self):
-        assert self._sensor([]).entity_registry_enabled_default is False
+    def test_diagnostic_and_disabled_by_default(self):
+        from homeassistant.const import EntityCategory
+
+        for key, _, _ in self.CASES:
+            sensor = self._sensor(key, [])
+            assert sensor.entity_registry_enabled_default is False
+            assert sensor.entity_category is EntityCategory.DIAGNOSTIC
+
+    def test_battery_fault_is_a_problem_sensor(self):
+        assert self._sensor("battery_fault", []).device_class == "problem"
+
+    def test_unique_id_keeps_the_original_battery_calibration_suffix(self):
+        assert self._sensor("battery_calibration", []).unique_id.endswith("_battery_calibration")
