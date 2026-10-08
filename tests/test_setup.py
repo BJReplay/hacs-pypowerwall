@@ -182,3 +182,20 @@ async def test_cloud_entry_explicit_scan_interval_overrides_cloud_default(
         await hass.async_block_till_done()
 
     assert entry.runtime_data.update_interval == timedelta(seconds=20)
+
+
+async def test_battery_calibration_binary_sensor_is_disabled_by_default(
+    hass: HomeAssistant,
+) -> None:
+    entry = MockConfigEntry(domain=DOMAIN, unique_id=DIN, data=ENTRY_DATA)
+    entry.add_to_hass(hass)
+
+    with patch(CONNECT_TARGET, return_value=make_fake_pw(alerts=["BatteryCalibration"])):
+        assert await hass.config_entries.async_setup(entry.entry_id)
+        await hass.async_block_till_done()
+
+    registry = er.async_get(hass)
+    entity_id = registry.async_get_entity_id("binary_sensor", DOMAIN, f"{DIN}_battery_calibration")
+    assert entity_id is not None
+    assert registry.async_get(entity_id).disabled_by is er.RegistryEntryDisabler.INTEGRATION
+    assert hass.states.get(entity_id) is None

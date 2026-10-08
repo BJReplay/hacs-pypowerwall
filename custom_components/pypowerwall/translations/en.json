@@ -164,7 +164,8 @@
       "fan_duty": { "name": "{device} fan {fan} duty" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Grid connected" }
+      "grid_connected": { "name": "Grid connected" },
+      "battery_calibration": { "name": "Battery calibration" }
     },
     "number": {
       "battery_reserve": { "name": "Battery reserve" }

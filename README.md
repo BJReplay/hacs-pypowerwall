@@ -70,6 +70,7 @@ The integration ships a translation file for every language Home Assistant suppo
 | Home power | sensor | W |
 | Grid status | sensor | `UP` / `DOWN` / `SYNCING` |
 | Grid connected | binary_sensor | connectivity, derived from grid status |
+| Battery calibration | binary_sensor | **⚠️ Disabled by default.** Diagnostic, on while the gateway reports the `BatteryCalibration` alert (see [`docs/alerts.md`](./docs/alerts.md)). |
 | Active alerts | sensor | count of active alerts; the alert names (e.g. `GridCodesWrite`) are in the `alerts` attribute, sorted, for templates and automations; see [`docs/alerts.md`](./docs/alerts.md) for what the known alerts mean |
 | Firmware version | sensor | diagnostic |
 | Uptime | sensor | diagnostic, seconds |

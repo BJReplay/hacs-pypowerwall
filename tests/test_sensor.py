@@ -129,3 +129,26 @@ class TestAlertAttributes:
 
     def test_other_sensors_have_no_attributes(self):
         assert self._sensor("firmware_version", []).extra_state_attributes is None
+
+
+class TestBatteryCalibrationBinarySensor:
+    def _sensor(self, alerts):
+        from unittest.mock import MagicMock
+
+        from custom_components.pypowerwall.binary_sensor import (
+            PowerwallBatteryCalibrationBinarySensor,
+        )
+
+        coordinator = MagicMock()
+        coordinator.data = PowerwallData(din="DIN1", alerts=alerts)
+        return PowerwallBatteryCalibrationBinarySensor(coordinator)
+
+    def test_on_while_the_alert_is_active(self):
+        assert self._sensor(["BatteryCalibration", "GridCodesWrite"]).is_on is True
+
+    def test_off_otherwise(self):
+        assert self._sensor(["GridCodesWrite"]).is_on is False
+        assert self._sensor([]).is_on is False
+
+    def test_disabled_by_default(self):
+        assert self._sensor([]).entity_registry_enabled_default is False

@@ -10,7 +10,7 @@ Some alerts are informational and not faults (for example `FWUpdateSucceeded`, "
 | Alert | Meaning | Device | Source | Upstream |
 | --- | --- | --- | --- | --- |
 | `BackfeedLimited` | The system is configured for inadvertent export and therefore will not further discharge to respect this limit | `STSTSM` | Tesla manual | [entry](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/docs/reference/alerts.md#backfeed-limited-backfeedlimited) |
-| `BatteryCalibration` | Not documented upstream yet. Seen on a real system, meaning unconfirmed. | — | Observed | [not listed](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/docs/reference/alerts.md) |
+| `BatteryCalibration` | Not documented upstream yet. Seen on a real system, meaning unconfirmed. Also exposed as the disabled-by-default "Battery calibration" binary sensor. | — | Observed | [not listed](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/docs/reference/alerts.md) |
 | `BatteryFault` | One or more inverter blocks is in a faulted state. (Severity: Critical) | `STSTSM` | Tesla manual | [entry](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/docs/reference/alerts.md#battery-fault-batteryfault) |
 | `BMS_a083_Nvram_Filecache` | Not documented upstream yet. Seen on a real system, meaning unconfirmed. | — | Observed | [not listed](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/docs/reference/alerts.md) |
 | `ChargeOnlyFromSolarOverride` | Not documented upstream yet. Seen on a real system, meaning unconfirmed. | — | Observed | [not listed](https://github.com/jasonacox/pypowerwall/blob/v0.18.2/docs/reference/alerts.md) |
