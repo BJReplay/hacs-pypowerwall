@@ -37,6 +37,7 @@ class PowerwallSensorDescription(SensorEntityDescription):
     """Describes a pypowerwall sensor backed by a PowerwallData field."""
 
     value_fn: Callable[[PowerwallData], object]
+    attributes_fn: Callable[[PowerwallData], dict[str, object]] | None = None
 
 
 def _battery_import_power(data: PowerwallData) -> float | None:
@@ -209,6 +210,7 @@ SENSOR_DESCRIPTIONS: tuple[PowerwallSensorDescription, ...] = (
         state_class=SensorStateClass.MEASUREMENT,
         entity_category=EntityCategory.DIAGNOSTIC,
         value_fn=lambda data: len(data.alerts),
+        attributes_fn=lambda data: {"alerts": data.alerts},
     ),
     PowerwallSensorDescription(
         key="firmware_version",
@@ -319,6 +321,12 @@ class PowerwallSensor(PowerwallEntity, SensorEntity):
     @property
     def native_value(self):
         return self.entity_description.value_fn(self.coordinator.data)
+
+    @property
+    def extra_state_attributes(self):
+        if self.entity_description.attributes_fn is None:
+            return None
+        return self.entity_description.attributes_fn(self.coordinator.data)
 
 
 class PowerwallTempSensor(PowerwallEntity, SensorEntity):
