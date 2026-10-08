@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktiv Alarmer" },
       "firmware_version": { "name": "Firmware-Versioun" },
       "uptime": { "name": "Laafzäit" },
+      "tariff_name": { "name": "Tarifnumm" },
+      "tariff_utility": { "name": "Tarifanbieter" },
+      "tariff_code": { "name": "Tarifcode" },
       "battery_temp": { "name": "{device} Temperatur" },
       "fan_speed": { "name": "{device} Ventilator {fan} Vitesse" },
       "fan_duty": { "name": "{device} Ventilator {fan} Tastgrad" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Mam Netz verbonnen" }
+      "grid_connected": { "name": "Mam Netz verbonnen" },
+      "battery_calibration": { "name": "Batterie-Kalibréierung" },
+      "battery_fault": { "name": "Batteriefeeler" },
+      "grid_manually_disconnected": { "name": "Manuell vum Netz getrennt" },
+      "self_consumption_reserve_limit": { "name": "Batterie um Reservelimit" },
+      "solar_charge_only_limited": { "name": "Nëmme Solarluedung limitéiert" },
+      "backfeed_limited": { "name": "Réckspeisung limitéiert" },
+      "site_min_power_limited": { "name": "Mindestleeschtung vum Site limitéiert" }
     },
     "number": {
       "battery_reserve": { "name": "Batteriereserve" }

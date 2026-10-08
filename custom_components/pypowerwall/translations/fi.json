@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktiiviset hälytykset" },
       "firmware_version": { "name": "Laiteohjelmiston versio" },
       "uptime": { "name": "Käyntiaika" },
+      "tariff_name": { "name": "Hinnaston nimi" },
+      "tariff_utility": { "name": "Hinnaston toimittaja" },
+      "tariff_code": { "name": "Hinnaston koodi" },
       "battery_temp": { "name": "{device} lämpötila" },
       "fan_speed": { "name": "{device} tuuletin {fan} nopeus" },
       "fan_duty": { "name": "{device} tuuletin {fan} käyttösuhde" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Yhdistetty sähköverkkoon" }
+      "grid_connected": { "name": "Yhdistetty sähköverkkoon" },
+      "battery_calibration": { "name": "Akun kalibrointi" },
+      "battery_fault": { "name": "Akkuvika" },
+      "grid_manually_disconnected": { "name": "Irrotettu sähköverkosta manuaalisesti" },
+      "self_consumption_reserve_limit": { "name": "Akku varausrajalla" },
+      "solar_charge_only_limited": { "name": "Vain aurinkolataus rajoitettu" },
+      "backfeed_limited": { "name": "Verkkoon syöttö rajoitettu" },
+      "site_min_power_limited": { "name": "Kohteen vähimmäisteho rajoitettu" }
     },
     "number": {
       "battery_reserve": { "name": "Akun varaus" }

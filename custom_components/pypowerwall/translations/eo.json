@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktivaj avertoj" },
       "firmware_version": { "name": "Versio de la mikroprogramaro" },
       "uptime": { "name": "Funkcia tempo" },
+      "tariff_name": { "name": "Nomo de la tarifo" },
+      "tariff_utility": { "name": "Provizanto de la tarifo" },
+      "tariff_code": { "name": "Kodo de la tarifo" },
       "battery_temp": { "name": "Temperaturo de {device}" },
       "fan_speed": { "name": "Rapido de ventolilo {fan} de {device}" },
       "fan_duty": { "name": "Labortempo de ventolilo {fan} de {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Konektita al la reto" }
+      "grid_connected": { "name": "Konektita al la reto" },
+      "battery_calibration": { "name": "Kalibrado de la baterio" },
+      "battery_fault": { "name": "Malfunkcio de la baterio" },
+      "grid_manually_disconnected": { "name": "Mane malkonektita de la reto" },
+      "self_consumption_reserve_limit": { "name": "Baterio ĉe rezerva limo" },
+      "solar_charge_only_limited": { "name": "Nur suna ŝargado limigita" },
+      "backfeed_limited": { "name": "Retrofluo limigita" },
+      "site_min_power_limited": { "name": "Minimuma potenco de la loko limigita" }
     },
     "number": {
       "battery_reserve": { "name": "Bateria rezervo" }

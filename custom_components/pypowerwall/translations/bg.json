@@ -156,12 +156,22 @@
       "alert_count": { "name": "Активни сигнали" },
       "firmware_version": { "name": "Версия на фърмуера" },
       "uptime": { "name": "Време на работа" },
+      "tariff_name": { "name": "Име на тарифата" },
+      "tariff_utility": { "name": "Доставчик на тарифата" },
+      "tariff_code": { "name": "Код на тарифата" },
       "battery_temp": { "name": "Температура на {device}" },
       "fan_speed": { "name": "Скорост на вентилатор {fan} на {device}" },
       "fan_duty": { "name": "Запълване на вентилатор {fan} на {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Свързан към мрежата" }
+      "grid_connected": { "name": "Свързан към мрежата" },
+      "battery_calibration": { "name": "Калибриране на батерията" },
+      "battery_fault": { "name": "Неизправност на батерията" },
+      "grid_manually_disconnected": { "name": "Ръчно изключено от мрежата" },
+      "self_consumption_reserve_limit": { "name": "Батерията е на резервния лимит" },
+      "solar_charge_only_limited": { "name": "Ограничено зареждане само от слънцето" },
+      "backfeed_limited": { "name": "Обратното захранване е ограничено" },
+      "site_min_power_limited": { "name": "Минималната мощност на обекта е ограничена" }
     },
     "number": {
       "battery_reserve": { "name": "Резерв на батерията" }

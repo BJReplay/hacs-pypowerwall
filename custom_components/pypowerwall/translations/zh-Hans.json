@@ -156,12 +156,22 @@
       "alert_count": { "name": "当前告警数" },
       "firmware_version": { "name": "固件版本" },
       "uptime": { "name": "运行时间" },
+      "tariff_name": { "name": "电价方案名称" },
+      "tariff_utility": { "name": "电价方案供电公司" },
+      "tariff_code": { "name": "电价方案代码" },
       "battery_temp": { "name": "{device}温度" },
       "fan_speed": { "name": "{device}风扇{fan}转速" },
       "fan_duty": { "name": "{device}风扇{fan}占空比" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "电网已连接" }
+      "grid_connected": { "name": "电网已连接" },
+      "battery_calibration": { "name": "电池校准" },
+      "battery_fault": { "name": "电池故障" },
+      "grid_manually_disconnected": { "name": "已手动断开电网" },
+      "self_consumption_reserve_limit": { "name": "电池处于备用电量限值" },
+      "solar_charge_only_limited": { "name": "仅太阳能充电受限" },
+      "backfeed_limited": { "name": "回馈电网受限" },
+      "site_min_power_limited": { "name": "站点最低功率受限" }
     },
     "number": {
       "battery_reserve": { "name": "电池保留电量" }

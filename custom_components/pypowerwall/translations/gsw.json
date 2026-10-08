@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktivi Warnigä" },
       "firmware_version": { "name": "Firmware-Version" },
       "uptime": { "name": "Laufzit" },
+      "tariff_name": { "name": "Tarifname" },
+      "tariff_utility": { "name": "Tarifazbieter" },
+      "tariff_code": { "name": "Tarifcode" },
       "battery_temp": { "name": "{device} Temperatur" },
       "fan_speed": { "name": "{device} Lüfter {fan} Drehzahl" },
       "fan_duty": { "name": "{device} Lüfter {fan} Tastgrad" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Mit em Netz verbunde" }
+      "grid_connected": { "name": "Mit em Netz verbunde" },
+      "battery_calibration": { "name": "Batterie-Kalibrierig" },
+      "battery_fault": { "name": "Batteriefähler" },
+      "grid_manually_disconnected": { "name": "Vo Hand vom Netz trennt" },
+      "self_consumption_reserve_limit": { "name": "Batterie am Reserveliimit" },
+      "solar_charge_only_limited": { "name": "Nume Solarladig begränzt" },
+      "backfeed_limited": { "name": "Ruckspisig begränzt" },
+      "site_min_power_limited": { "name": "Mindestleischtig vom Standort begränzt" }
     },
     "number": {
       "battery_reserve": { "name": "Batteriereserve" }

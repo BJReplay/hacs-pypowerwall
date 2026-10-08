@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktive Warnungen" },
       "firmware_version": { "name": "Firmware-Version" },
       "uptime": { "name": "Betriebszeit" },
+      "tariff_name": { "name": "Tarifname" },
+      "tariff_utility": { "name": "Tarifanbieter" },
+      "tariff_code": { "name": "Tarifcode" },
       "battery_temp": { "name": "{device} Temperatur" },
       "fan_speed": { "name": "{device} Lüfter {fan} Drehzahl" },
       "fan_duty": { "name": "{device} Lüfter {fan} Tastgrad" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Mit Netz verbunden" }
+      "grid_connected": { "name": "Mit Netz verbunden" },
+      "battery_calibration": { "name": "Batteriekalibrierung" },
+      "battery_fault": { "name": "Batteriefehler" },
+      "grid_manually_disconnected": { "name": "Manuell vom Netz getrennt" },
+      "self_consumption_reserve_limit": { "name": "Batterie am Reservelimit" },
+      "solar_charge_only_limited": { "name": "Nur-Solarladung begrenzt" },
+      "backfeed_limited": { "name": "Rückspeisung begrenzt" },
+      "site_min_power_limited": { "name": "Mindestleistung des Standorts begrenzt" }
     },
     "number": {
       "battery_reserve": { "name": "Akkureserve" }

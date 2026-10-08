@@ -156,12 +156,22 @@
       "alert_count": { "name": "క్రియాశీల హెచ్చరికలు" },
       "firmware_version": { "name": "ఫర్మ్‌వేర్ వెర్షన్" },
       "uptime": { "name": "అప్‌టైమ్" },
+      "tariff_name": { "name": "టారిఫ్ పేరు" },
+      "tariff_utility": { "name": "టారిఫ్ యుటిలిటీ" },
+      "tariff_code": { "name": "టారిఫ్ కోడ్" },
       "battery_temp": { "name": "{device} ఉష్ణోగ్రత" },
       "fan_speed": { "name": "{device} ఫ్యాన్ {fan} వేగం" },
       "fan_duty": { "name": "{device} ఫ్యాన్ {fan} డ్యూటీ సైకిల్" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "గ్రిడ్‌కు కనెక్ట్ చేయబడింది" }
+      "grid_connected": { "name": "గ్రిడ్‌కు కనెక్ట్ చేయబడింది" },
+      "battery_calibration": { "name": "బ్యాటరీ క్యాలిబ్రేషన్" },
+      "battery_fault": { "name": "బ్యాటరీ లోపం" },
+      "grid_manually_disconnected": { "name": "గ్రిడ్ నుండి మాన్యువల్‌గా డిస్‌కనెక్ట్ చేయబడింది" },
+      "self_consumption_reserve_limit": { "name": "బ్యాటరీ రిజర్వ్ పరిమితిలో ఉంది" },
+      "solar_charge_only_limited": { "name": "సోలార్ ఛార్జ్ మాత్రమే పరిమితం చేయబడింది" },
+      "backfeed_limited": { "name": "బ్యాక్‌ఫీడ్ పరిమితం చేయబడింది" },
+      "site_min_power_limited": { "name": "సైట్ కనీస పవర్ పరిమితం చేయబడింది" }
     },
     "number": {
       "battery_reserve": { "name": "బ్యాటరీ రిజర్వ్" }

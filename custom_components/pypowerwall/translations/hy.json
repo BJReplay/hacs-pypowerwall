@@ -156,12 +156,22 @@
       "alert_count": { "name": "Ակտիվ ազդանշաններ" },
       "firmware_version": { "name": "Ֆիրմվեյրի տարբերակ" },
       "uptime": { "name": "Աշխատաժամանակ" },
+      "tariff_name": { "name": "Սակագնի անվանումը" },
+      "tariff_utility": { "name": "Սակագնի մատակարար" },
+      "tariff_code": { "name": "Սակագնի կոդը" },
       "battery_temp": { "name": "{device} ջերմաստիճան" },
       "fan_speed": { "name": "{device} օդափոխիչ {fan} արագություն" },
       "fan_duty": { "name": "{device} օդափոխիչ {fan} լցավորման գործակից" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Միացված է էլեկտրացանցին" }
+      "grid_connected": { "name": "Միացված է էլեկտրացանցին" },
+      "battery_calibration": { "name": "Մարտկոցի կալիբրացիա" },
+      "battery_fault": { "name": "Մարտկոցի անսարքություն" },
+      "grid_manually_disconnected": { "name": "Ձեռքով անջատված է էլեկտրացանցից" },
+      "self_consumption_reserve_limit": { "name": "Մարտկոցը պահուստի սահմանին է" },
+      "solar_charge_only_limited": { "name": "Միայն արևային լիցքավորումը սահմանափակված է" },
+      "backfeed_limited": { "name": "Հետադարձ սնումը սահմանափակված է" },
+      "site_min_power_limited": { "name": "Օբյեկտի նվազագույն հզորությունը սահմանափակված է" }
     },
     "number": {
       "battery_reserve": { "name": "Մարտկոցի պահուստ" }

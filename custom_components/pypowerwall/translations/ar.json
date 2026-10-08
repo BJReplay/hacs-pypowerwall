@@ -156,12 +156,22 @@
       "alert_count": { "name": "التنبيهات النشطة" },
       "firmware_version": { "name": "إصدار البرنامج الثابت" },
       "uptime": { "name": "مدة التشغيل" },
+      "tariff_name": { "name": "اسم التعرفة" },
+      "tariff_utility": { "name": "مزود الكهرباء للتعرفة" },
+      "tariff_code": { "name": "رمز التعرفة" },
       "battery_temp": { "name": "درجة حرارة {device}" },
       "fan_speed": { "name": "سرعة المروحة {fan} في {device}" },
       "fan_duty": { "name": "دورة تشغيل المروحة {fan} في {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "متصل بالشبكة" }
+      "grid_connected": { "name": "متصل بالشبكة" },
+      "battery_calibration": { "name": "معايرة البطارية" },
+      "battery_fault": { "name": "عطل في البطارية" },
+      "grid_manually_disconnected": { "name": "مفصول يدويًا عن الشبكة" },
+      "self_consumption_reserve_limit": { "name": "البطارية عند حد الاحتياطي" },
+      "solar_charge_only_limited": { "name": "الشحن الشمسي فقط محدود" },
+      "backfeed_limited": { "name": "التغذية العكسية محدودة" },
+      "site_min_power_limited": { "name": "الحد الأدنى لطاقة الموقع محدود" }
     },
     "number": {
       "battery_reserve": { "name": "احتياطي البطارية" }

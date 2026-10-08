@@ -156,12 +156,22 @@
       "alert_count": { "name": "செயலில் உள்ள எச்சரிக்கைகள்" },
       "firmware_version": { "name": "ஃபார்ம்வேர் பதிப்பு" },
       "uptime": { "name": "இயங்கிய நேரம்" },
+      "tariff_name": { "name": "கட்டணத் திட்டத்தின் பெயர்" },
+      "tariff_utility": { "name": "கட்டணத் திட்டத்தின் மின் நிறுவனம்" },
+      "tariff_code": { "name": "கட்டணத் திட்டக் குறியீடு" },
       "battery_temp": { "name": "{device} வெப்பநிலை" },
       "fan_speed": { "name": "{device} மின்விசிறி {fan} வேகம்" },
       "fan_duty": { "name": "{device} மின்விசிறி {fan} கடமை சுழற்சி" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "கிரிட் இணைக்கப்பட்டுள்ளது" }
+      "grid_connected": { "name": "கிரிட் இணைக்கப்பட்டுள்ளது" },
+      "battery_calibration": { "name": "பேட்டரி அளவீட்டுச் சரிசெய்தல்" },
+      "battery_fault": { "name": "பேட்டரி பழுது" },
+      "grid_manually_disconnected": { "name": "கைமுறையாக கிரிட்டிலிருந்து துண்டிக்கப்பட்டது" },
+      "self_consumption_reserve_limit": { "name": "பேட்டரி இருப்பு வரம்பில் உள்ளது" },
+      "solar_charge_only_limited": { "name": "சூரிய மின்னேற்றம் மட்டும் வரம்பிடப்பட்டது" },
+      "backfeed_limited": { "name": "பின்னோக்கு வழங்கல் வரம்பிடப்பட்டது" },
+      "site_min_power_limited": { "name": "தளத்தின் குறைந்தபட்ச மின்சக்தி வரம்பிடப்பட்டது" }
     },
     "number": {
       "battery_reserve": { "name": "பேட்டரி இருப்பு" }

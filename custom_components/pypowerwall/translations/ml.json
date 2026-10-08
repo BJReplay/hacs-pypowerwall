@@ -156,12 +156,22 @@
       "alert_count": { "name": "സജീവ അലേർട്ടുകൾ" },
       "firmware_version": { "name": "ഫേംവെയർ പതിപ്പ്" },
       "uptime": { "name": "അപ്ടൈം" },
+      "tariff_name": { "name": "താരിഫ് പേര്" },
+      "tariff_utility": { "name": "താരിഫ് യൂട്ടിലിറ്റി" },
+      "tariff_code": { "name": "താരിഫ് കോഡ്" },
       "battery_temp": { "name": "{device} താപനില" },
       "fan_speed": { "name": "{device} ഫാൻ {fan} വേഗത" },
       "fan_duty": { "name": "{device} ഫാൻ {fan} ഡ്യൂട്ടി" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "ഗ്രിഡ് ബന്ധിപ്പിച്ചു" }
+      "grid_connected": { "name": "ഗ്രിഡ് ബന്ധിപ്പിച്ചു" },
+      "battery_calibration": { "name": "ബാറ്ററി കാലിബ്രേഷൻ" },
+      "battery_fault": { "name": "ബാറ്ററി തകരാർ" },
+      "grid_manually_disconnected": { "name": "ഗ്രിഡിൽ നിന്ന് മാനുവലായി വിച്ഛേദിച്ചു" },
+      "self_consumption_reserve_limit": { "name": "ബാറ്ററി റിസർവ് പരിധിയിൽ" },
+      "solar_charge_only_limited": { "name": "സോളാർ ചാർജ് മാത്രം പരിമിതപ്പെടുത്തി" },
+      "backfeed_limited": { "name": "ബാക്ക്ഫീഡ് പരിമിതപ്പെടുത്തി" },
+      "site_min_power_limited": { "name": "സൈറ്റിന്റെ ഏറ്റവും കുറഞ്ഞ പവർ പരിമിതപ്പെടുത്തി" }
     },
     "number": {
       "battery_reserve": { "name": "ബാറ്ററി റിസർവ്" }

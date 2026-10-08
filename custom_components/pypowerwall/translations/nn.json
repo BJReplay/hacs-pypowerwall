@@ -156,12 +156,22 @@
       "alert_count": { "name": "Aktive varsel" },
       "firmware_version": { "name": "Fastvareversjon" },
       "uptime": { "name": "Oppetid" },
+      "tariff_name": { "name": "Tariffnamn" },
+      "tariff_utility": { "name": "Tariffselskap" },
+      "tariff_code": { "name": "Tariffkode" },
       "battery_temp": { "name": "{device}-temperatur" },
       "fan_speed": { "name": "{device}-vifte {fan} fart" },
       "fan_duty": { "name": "{device}-vifte {fan} driftssyklus" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Tilkopla straumnettet" }
+      "grid_connected": { "name": "Tilkopla straumnettet" },
+      "battery_calibration": { "name": "Batterikalibrering" },
+      "battery_fault": { "name": "Batterifeil" },
+      "grid_manually_disconnected": { "name": "Manuelt kopla frå nettet" },
+      "self_consumption_reserve_limit": { "name": "Batteri ved reservegrense" },
+      "solar_charge_only_limited": { "name": "Berre sollading avgrensa" },
+      "backfeed_limited": { "name": "Tilbakemating avgrensa" },
+      "site_min_power_limited": { "name": "Minimumseffekten til anlegget avgrensa" }
     },
     "number": {
       "battery_reserve": { "name": "Batterireserve" }

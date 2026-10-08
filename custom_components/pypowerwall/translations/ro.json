@@ -156,12 +156,22 @@
       "alert_count": { "name": "Alerte active" },
       "firmware_version": { "name": "Versiune firmware" },
       "uptime": { "name": "Timp de funcționare" },
+      "tariff_name": { "name": "Numele tarifului" },
+      "tariff_utility": { "name": "Furnizorul tarifului" },
+      "tariff_code": { "name": "Codul tarifului" },
       "battery_temp": { "name": "Temperatură {device}" },
       "fan_speed": { "name": "Viteza ventilatorului {fan} {device}" },
       "fan_duty": { "name": "Ciclu de lucru ventilator {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "Conectat la rețea" }
+      "grid_connected": { "name": "Conectat la rețea" },
+      "battery_calibration": { "name": "Calibrarea bateriei" },
+      "battery_fault": { "name": "Defecțiune a bateriei" },
+      "grid_manually_disconnected": { "name": "Deconectat manual de la rețea" },
+      "self_consumption_reserve_limit": { "name": "Baterie la limita de rezervă" },
+      "solar_charge_only_limited": { "name": "Încărcare doar solară limitată" },
+      "backfeed_limited": { "name": "Injecție în rețea limitată" },
+      "site_min_power_limited": { "name": "Puterea minimă a amplasamentului limitată" }
     },
     "number": {
       "battery_reserve": { "name": "Rezervă baterie" }

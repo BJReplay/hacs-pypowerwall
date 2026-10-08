@@ -156,12 +156,22 @@
       "alert_count": { "name": "सक्रिय अलर्ट" },
       "firmware_version": { "name": "फर्मवेयर संस्करण" },
       "uptime": { "name": "अपटाइम" },
+      "tariff_name": { "name": "टैरिफ़ का नाम" },
+      "tariff_utility": { "name": "टैरिफ़ की यूटिलिटी" },
+      "tariff_code": { "name": "टैरिफ़ कोड" },
       "battery_temp": { "name": "{device} तापमान" },
       "fan_speed": { "name": "{device} फ़ैन {fan} गति" },
       "fan_duty": { "name": "{device} फ़ैन {fan} ड्यूटी साइकिल" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "ग्रिड से जुड़ा" }
+      "grid_connected": { "name": "ग्रिड से जुड़ा" },
+      "battery_calibration": { "name": "बैटरी कैलिब्रेशन" },
+      "battery_fault": { "name": "बैटरी में खराबी" },
+      "grid_manually_disconnected": { "name": "ग्रिड से मैन्युअल रूप से अलग किया गया" },
+      "self_consumption_reserve_limit": { "name": "बैटरी रिज़र्व सीमा पर" },
+      "solar_charge_only_limited": { "name": "केवल सोलर चार्ज सीमित" },
+      "backfeed_limited": { "name": "बैकफ़ीड सीमित" },
+      "site_min_power_limited": { "name": "साइट की न्यूनतम पावर सीमित" }
     },
     "number": {
       "battery_reserve": { "name": "बैटरी रिज़र्व" }

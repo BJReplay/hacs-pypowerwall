@@ -156,12 +156,22 @@
       "alert_count": { "name": "هشدارهای فعال" },
       "firmware_version": { "name": "نسخه فریمور" },
       "uptime": { "name": "مدت‌زمان روشن بودن" },
+      "tariff_name": { "name": "نام تعرفه" },
+      "tariff_utility": { "name": "شرکت برق تعرفه" },
+      "tariff_code": { "name": "کد تعرفه" },
       "battery_temp": { "name": "دمای {device}" },
       "fan_speed": { "name": "سرعت فن {fan} {device}" },
       "fan_duty": { "name": "چرخه وظیفه فن {fan} {device}" }
     },
     "binary_sensor": {
-      "grid_connected": { "name": "اتصال به شبکه برق" }
+      "grid_connected": { "name": "اتصال به شبکه برق" },
+      "battery_calibration": { "name": "کالیبراسیون باتری" },
+      "battery_fault": { "name": "خرابی باتری" },
+      "grid_manually_disconnected": { "name": "جدا شده دستی از شبکه برق" },
+      "self_consumption_reserve_limit": { "name": "باتری در حد ذخیره" },
+      "solar_charge_only_limited": { "name": "شارژ فقط خورشیدی محدود شده" },
+      "backfeed_limited": { "name": "تزریق معکوس به شبکه محدود شده" },
+      "site_min_power_limited": { "name": "حداقل توان محل محدود شده" }
     },
     "number": {
       "battery_reserve": { "name": "ذخیره باتری" }
