@@ -61,7 +61,29 @@ class PowerwallData:
     battery_energy_exported: float | None = None
     home_power: float | None = None
     temps: dict[str, float] = field(default_factory=dict)
+    fans: dict[str, dict[str, float | None]] = field(default_factory=dict)
     alerts: list[str] = field(default_factory=list)
+
+
+FAN_SIGNALS = ("PCH_FanSpeed_A", "PCH_FanSpeed_B", "PCH_FanDuty_A", "PCH_FanDuty_B")
+
+
+def _extract_fans(vitals: dict | None) -> dict[str, dict[str, float | None]]:
+    """Pick the Powerwall 3 inverter fan signals out of vitals().
+
+    Only TEDAPI-backed modes on Powerwall 3 populate these (TEPINV blocks); every
+    other backend returns None or blocks without the keys, yielding {}.
+    """
+    fans: dict[str, dict[str, float | None]] = {}
+    if not isinstance(vitals, dict):
+        return fans
+    for device, block in vitals.items():
+        if not device.startswith("TEPINV--") or not isinstance(block, dict):
+            continue
+        signals = {name: block.get(name) for name in FAN_SIGNALS}
+        if any(value is not None for value in signals.values()):
+            fans[device] = signals
+    return fans
 
 
 def _safe_round(value: float | None, digits: int) -> float | None:
@@ -101,6 +123,7 @@ def _fetch_data(pw: pypowerwall.Powerwall, conn_type: str | None = None) -> Powe
         battery_energy_exported=_safe_round(_wh_to_kwh(battery_meter.get("energy_exported")), 3),
         home_power=_safe_round(pw.home(), 0),
         temps=pw.temps() or {},
+        fans=_extract_fans(pw.vitals()),
         alerts=sorted(pw.alerts() or []),
     )
     # get_grid_charging()/get_grid_export() require Cloud or FleetAPI mode; other

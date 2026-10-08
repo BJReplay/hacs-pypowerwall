@@ -76,3 +76,31 @@ class TestTrapezoidalEnergyDeltaKwh:
         # (100W + 300W) / 2 = 200W average, held for 10s -> 200 * (10/3600) / 1000 kWh.
         result = _trapezoidal_energy_delta_kwh(100, 300, 10)
         assert result == 200 * (10 / 3600) / 1000
+
+
+class TestFanSensor:
+    def _sensor(self, signal, fans):
+        from unittest.mock import MagicMock
+
+        from custom_components.pypowerwall.sensor import PowerwallFanSensor
+
+        coordinator = MagicMock()
+        coordinator.data = PowerwallData(din="DIN1", fans=fans)
+        return PowerwallFanSensor(coordinator, "TEPINV--x", signal)
+
+    def test_speed_is_rpm(self):
+        s = self._sensor("PCH_FanSpeed_B", {"TEPINV--x": {"PCH_FanSpeed_B": 1397}})
+        assert s.native_unit_of_measurement == "rpm"
+        assert s.native_value == 1397
+        assert s.translation_key == "fan_speed"
+        assert s.translation_placeholders == {"device": "TEPINV--x", "fan": "B"}
+
+    def test_duty_is_percent(self):
+        s = self._sensor("PCH_FanDuty_A", {"TEPINV--x": {"PCH_FanDuty_A": 19.1}})
+        assert s.native_unit_of_measurement == "%"
+        assert s.translation_key == "fan_duty"
+        assert s.native_value == 19.1
+
+    def test_missing_device_is_none(self):
+        s = self._sensor("PCH_FanDuty_A", {})
+        assert s.native_value is None

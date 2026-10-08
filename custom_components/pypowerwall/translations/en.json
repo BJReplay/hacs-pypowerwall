@@ -156,7 +156,9 @@
       "alert_count": { "name": "Active alerts" },
       "firmware_version": { "name": "Firmware version" },
       "uptime": { "name": "Uptime" },
-      "battery_temp": { "name": "{device} temperature" }
+      "battery_temp": { "name": "{device} temperature" },
+      "fan_speed": { "name": "{device} fan {fan} speed" },
+      "fan_duty": { "name": "{device} fan {fan} duty" }
     },
     "binary_sensor": {
       "grid_connected": { "name": "Grid connected" }

@@ -295,3 +295,34 @@ async def test_update_data_logs_exception_before_raising_update_failed(
     assert "Error communicating with Powerwall" in caplog.text
     assert "AttributeError" in caplog.text
     assert "has no attribute 'foo'" in caplog.text
+
+
+class TestExtractFans:
+    PW3_VITALS = {
+        "TEPINV--1707000-00-A--TG1": {
+            "PCH_FanSpeed_A": 1395,
+            "PCH_FanSpeed_B": 1397,
+            "PCH_FanDuty_A": 19.1,
+            "PCH_FanDuty_B": None,
+        },
+        "TEPOD--1707000-00-A--TG1": {"HVP_PackTempMax": 40.3},
+        "TEPINV--1707000-00-A--TG2": {"PCH_FanSpeed_A": None},
+    }
+
+    def test_only_inverters_with_fan_values_are_kept(self):
+        from custom_components.pypowerwall.coordinator import _extract_fans
+
+        assert _extract_fans(self.PW3_VITALS) == {
+            "TEPINV--1707000-00-A--TG1": {
+                "PCH_FanSpeed_A": 1395,
+                "PCH_FanSpeed_B": 1397,
+                "PCH_FanDuty_A": 19.1,
+                "PCH_FanDuty_B": None,
+            }
+        }
+
+    def test_non_dict_vitals_yield_empty(self):
+        from custom_components.pypowerwall.coordinator import _extract_fans
+
+        assert _extract_fans(None) == {}
+        assert _extract_fans("garbage") == {}
