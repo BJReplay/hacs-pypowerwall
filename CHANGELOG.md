@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.11.0](https://github.com/jackrayner/hacs-pypowerwall/compare/0.10.0...0.11.0) (2026-10-08)
+
+
+### Features
+
+* add a disabled-by-default Battery calibration binary sensor ([3e3944e](https://github.com/jackrayner/hacs-pypowerwall/commit/3e3944ed40c3f1942e03c7fd27beba44faab929e))
+* add alert-backed binary sensors via a description table ([400ee2d](https://github.com/jackrayner/hacs-pypowerwall/commit/400ee2de011ad1b5325f205b5ccaada813b2b995))
+* alerts reference and alert-backed binary sensors ([5f6b474](https://github.com/jackrayner/hacs-pypowerwall/commit/5f6b4749ba09660ccef1fac131932781923b9646))
+* **i18n:** translate the alert binary sensor and tariff sensor names into all locales ([a867500](https://github.com/jackrayner/hacs-pypowerwall/commit/a8675000f5ae9ac6b81d7c16b411c6352e1c341d))
+
 ## [0.10.0](https://github.com/jackrayner/hacs-pypowerwall/compare/0.9.0...0.10.0) (2026-10-08)
 
 
