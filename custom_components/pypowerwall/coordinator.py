@@ -6,8 +6,10 @@ import logging
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import timedelta
+from pathlib import Path
 from typing import Any
 
+import aiopowerwall
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_EMAIL, CONF_HOST, CONF_PASSWORD
 from homeassistant.core import HomeAssistant
@@ -29,6 +31,7 @@ from .const import (
     CONN_TYPE_HYBRID,
     CONN_TYPE_LOCAL,
     CONN_TYPE_TEDAPI,
+    CONN_TYPE_TEDAPI_AIO,
     CONN_TYPE_TEDAPI_V1R,
     DOMAIN,
     GRID_CONTROL_CONN_TYPES,
@@ -156,6 +159,7 @@ class PowerwallDataUpdateCoordinator(DataUpdateCoordinator[PowerwallData]):
         hass: HomeAssistant,
         entry: ConfigEntry,
         pw: pypowerwall.Powerwall,
+        pwc: aiopowerwall.PowerwallClient,
         scan_interval: int,
     ) -> None:
         super().__init__(
@@ -166,6 +170,7 @@ class PowerwallDataUpdateCoordinator(DataUpdateCoordinator[PowerwallData]):
             update_interval=timedelta(seconds=scan_interval),
         )
         self.pw = pw
+        self.pwc = pwc
         self.conn_type = entry.data[CONF_CONN_TYPE]
 
     async def _async_update_data(self) -> PowerwallData:
@@ -209,6 +214,12 @@ def build_powerwall_kwargs(conn_type: str, data: Mapping[str, Any]) -> dict[str,
             "password": data[CONF_PASSWORD],
             "gw_pwd": data[CONF_GW_PWD],
         }
+    elif conn_type == CONN_TYPE_TEDAPI_AIO:
+        kwargs = {"host": data[CONF_HOST], "rsa_private_key_pem": Path(data[CONF_RSA_KEY_PATH]).read_bytes()}
+        if data.get(CONF_GW_PWD):
+            kwargs["gateway_password"] = data[CONF_GW_PWD]
+        if data.get(CONF_PASSWORD):
+            kwargs["gateway_password"] = data[CONF_PASSWORD]
     elif conn_type == CONN_TYPE_TEDAPI_V1R:
         kwargs = {"host": data[CONF_HOST], "rsa_key_path": data[CONF_RSA_KEY_PATH]}
         if data.get(CONF_GW_PWD):
@@ -235,11 +246,15 @@ def build_powerwall_kwargs(conn_type: str, data: Mapping[str, Any]) -> dict[str,
 
 async def async_connect_powerwall(
     hass: HomeAssistant, conn_type: str, data: Mapping[str, Any]
-) -> pypowerwall.Powerwall:
+) -> pypowerwall.Powerwall | aiopowerwall.PowerwallClient | aiopowerwall.PowerwallEnergySite :
     """Create and connect a Powerwall client in the executor, raising on failure."""
 
-    def _connect() -> pypowerwall.Powerwall:
-        pw = pypowerwall.Powerwall(**build_powerwall_kwargs(conn_type, data))
+    def _connect() -> pypowerwall.Powerwall | aiopowerwall.PowerwallClient | aiopowerwall.PowerwallEnergySite:
+        if conn_type == CONN_TYPE_TEDAPI_AIO:
+            pw = aiopowerwall.PowerwallClient(**build_powerwall_kwargs(conn_type, data))
+            pw.connect()
+        else:
+            pw = pypowerwall.Powerwall(**build_powerwall_kwargs(conn_type, data))
         if not pw.is_connected():
             hint = ""
             if conn_type in AUTH_CACHE_FILENAMES:
