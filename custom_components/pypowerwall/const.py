@@ -24,7 +24,12 @@ CONN_TYPE_FLEETAPI = "fleetapi"
 # respectively) rather than credentials a form can collect directly; v1r LAN mode
 # similarly needs a pre-registered RSA key file. These four all take a filesystem
 # path rather than inline credentials.
-FILE_BASED_CONN_TYPES = (CONN_TYPE_CLOUD, CONN_TYPE_FLEETAPI, CONN_TYPE_TEDAPI_AIO, CONN_TYPE_TEDAPI_V1R)
+FILE_BASED_CONN_TYPES = (
+    CONN_TYPE_CLOUD,
+    CONN_TYPE_FLEETAPI,
+    CONN_TYPE_TEDAPI_AIO,
+    CONN_TYPE_TEDAPI_V1R,
+)
 
 # The file pypowerwall reads from `authpath` in each mode. pypowerwall also writes
 # refreshed tokens back into that directory, so it must be writable too.

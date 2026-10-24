@@ -151,11 +151,11 @@ def _connect_and_get_info(conn_type: str, data: dict[str, Any]) -> tuple[str, st
     """Connect to the gateway and return (din, site_name), raising on any failure."""
     if conn_type == CONN_TYPE_TEDAPI_AIO:
         pw = aiopowerwall.PowerwallClient(**build_powerwall_kwargs(conn_type, data))
-        if not pw.connect():            
+        if not pw.connect():
             raise PowerwallConnectionError(f"Unable to connect to Powerwall ({conn_type} mode)")
     else:
         pw = pypowerwall.Powerwall(**build_powerwall_kwargs(conn_type, data))
-        if not pw.is_connected(): 
+        if not pw.is_connected():
             raise PowerwallConnectionError(f"Unable to connect to Powerwall ({conn_type} mode)")
     din = pw.din()
     if not din:
@@ -175,7 +175,9 @@ def _check_auth_cache(conn_type: str, data: dict[str, Any]) -> None:
         raise AuthCacheNotWritableError
 
 
-async def _validate_input(hass: HomeAssistant, conn_type: str, data: dict[str, Any]) -> tuple[str, str | None]:
+async def _validate_input(
+    hass: HomeAssistant, conn_type: str, data: dict[str, Any]
+) -> tuple[str, str | None]:
     """Validate the user input, returning (din, site_name).
 
     v1r login takes either the gateway password or the customer password
@@ -198,7 +200,9 @@ class PypowerwallConfigFlow(ConfigFlow, domain=DOMAIN):
         """Let the user pick which pypowerwall connection mode to set up."""
         return self.async_show_menu(step_id="user", menu_options=MENU_OPTIONS)
 
-    async def _async_step_connection(self, conn_type: str, schema: vol.Schema, user_input: dict[str, Any] | None) -> ConfigFlowResult:
+    async def _async_step_connection(
+        self, conn_type: str, schema: vol.Schema, user_input: dict[str, Any] | None
+    ) -> ConfigFlowResult:
         """Shared validate/create logic for every connection-type step."""
         errors: dict[str, str] = {}
 
@@ -223,7 +227,9 @@ class PypowerwallConfigFlow(ConfigFlow, domain=DOMAIN):
 
         return self.async_show_form(step_id=conn_type, data_schema=schema, errors=errors)
 
-    async def async_step_reconfigure(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+    async def async_step_reconfigure(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Let the user correct an existing entry's connection settings.
 
         Without this, everything collected at setup is write-once: a changed
@@ -271,7 +277,9 @@ class PypowerwallConfigFlow(ConfigFlow, domain=DOMAIN):
         # alone don't say which connection type is being reconfigured.
         return self.async_show_form(
             step_id="reconfigure",
-            data_schema=self.add_suggested_values_to_schema(CONN_TYPE_SCHEMAS[conn_type], {**entry.data, **(user_input or {})}),
+            data_schema=self.add_suggested_values_to_schema(
+                CONN_TYPE_SCHEMAS[conn_type], {**entry.data, **(user_input or {})}
+            ),
             errors=errors,
             description_placeholders={"conn_type": conn_type},
         )
@@ -292,17 +300,29 @@ class PypowerwallConfigFlow(ConfigFlow, domain=DOMAIN):
         """Cloud mode: reuses a token cache produced by `python -m pypowerwall setup`."""
         return await self._async_step_connection(CONN_TYPE_CLOUD, STEP_CLOUD_SCHEMA, user_input)
 
-    async def async_step_fleetapi(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+    async def async_step_fleetapi(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """FleetAPI mode: reuses a config cache from `python -m pypowerwall.fleetapi setup`."""
-        return await self._async_step_connection(CONN_TYPE_FLEETAPI, STEP_FLEETAPI_SCHEMA, user_input)
+        return await self._async_step_connection(
+            CONN_TYPE_FLEETAPI, STEP_FLEETAPI_SCHEMA, user_input
+        )
 
-    async def async_step_tedapi_aio(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+    async def async_step_tedapi_aio(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """TEDAPI AIO LAN mode: requires an RSA key from `python -m pypowerwall register`."""
-        return await self._async_step_connection(CONN_TYPE_TEDAPI_AIO, STEP_TEDAPI_AIO_SCHEMA, user_input)
+        return await self._async_step_connection(
+            CONN_TYPE_TEDAPI_AIO, STEP_TEDAPI_AIO_SCHEMA, user_input
+        )
 
-    async def async_step_tedapi_V1r(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+    async def async_step_tedapi_V1r(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """TEDAPI v1r LAN mode: requires an RSA key from `python -m pypowerwall register`."""
-        return await self._async_step_connection(CONN_TYPE_TEDAPI_V1R, STEP_TEDAPI_V1R_SCHEMA, user_input)
+        return await self._async_step_connection(
+            CONN_TYPE_TEDAPI_V1R, STEP_TEDAPI_V1R_SCHEMA, user_input
+        )
 
     @staticmethod
     @callback
@@ -320,13 +340,17 @@ class PypowerwallOptionsFlow(OptionsFlow):
             return self.async_create_entry(data=user_input)
 
         default_scan_interval = (
-            DEFAULT_SCAN_INTERVAL_CLOUD if self.config_entry.data[CONF_CONN_TYPE] in GRID_CONTROL_CONN_TYPES else DEFAULT_SCAN_INTERVAL
+            DEFAULT_SCAN_INTERVAL_CLOUD
+            if self.config_entry.data[CONF_CONN_TYPE] in GRID_CONTROL_CONN_TYPES
+            else DEFAULT_SCAN_INTERVAL
         )
         current = self.config_entry.options.get("scan_interval", default_scan_interval)
         schema = vol.Schema(
             {
                 vol.Required("scan_interval", default=current): NumberSelector(
-                    NumberSelectorConfig(min=MIN_SCAN_INTERVAL, max=300, mode=NumberSelectorMode.BOX)
+                    NumberSelectorConfig(
+                        min=MIN_SCAN_INTERVAL, max=300, mode=NumberSelectorMode.BOX
+                    )
                 ),
             }
         )

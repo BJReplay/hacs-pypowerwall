@@ -215,7 +215,10 @@ def build_powerwall_kwargs(conn_type: str, data: Mapping[str, Any]) -> dict[str,
             "gw_pwd": data[CONF_GW_PWD],
         }
     elif conn_type == CONN_TYPE_TEDAPI_AIO:
-        kwargs = {"host": data[CONF_HOST], "rsa_private_key_pem": Path(data[CONF_RSA_KEY_PATH]).read_bytes()}
+        kwargs = {
+            "host": data[CONF_HOST],
+            "rsa_private_key_pem": Path(data[CONF_RSA_KEY_PATH]).read_bytes(),
+        }
         if data.get(CONF_GW_PWD):
             kwargs["gateway_password"] = data[CONF_GW_PWD]
         if data.get(CONF_PASSWORD):
@@ -249,7 +252,9 @@ async def async_connect_powerwall(
 ) -> pypowerwall.Powerwall | aiopowerwall.PowerwallClient | aiopowerwall.PowerwallEnergySite:
     """Create and connect a Powerwall client in the executor, raising on failure."""
 
-    def _connect() -> pypowerwall.Powerwall | aiopowerwall.PowerwallClient | aiopowerwall.PowerwallEnergySite:
+    def _connect() -> (
+        pypowerwall.Powerwall | aiopowerwall.PowerwallClient | aiopowerwall.PowerwallEnergySite
+    ):
         if conn_type == CONN_TYPE_TEDAPI_AIO:
             pw = aiopowerwall.PowerwallClient(**build_powerwall_kwargs(conn_type, data))
             pw.connect()
