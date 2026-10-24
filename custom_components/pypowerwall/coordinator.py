@@ -238,7 +238,7 @@ def build_powerwall_kwargs(conn_type: str, data: Mapping[str, Any]) -> dict[str,
             kwargs["siteid"] = data[CONF_SITEID]
     else:
         raise ValueError(f"Unknown pypowerwall connection type: {conn_type}")
-    if conn_type != CONN_TYPE_TEDAPI_V1R:
+    if conn_type not in [CONN_TYPE_TEDAPI_V1R, CONN_TYPE_TEDAPI_AIO]:
         kwargs["failover"] = False
     kwargs["timeout"] = POWERWALL_REQUEST_TIMEOUT
     return kwargs
@@ -246,7 +246,7 @@ def build_powerwall_kwargs(conn_type: str, data: Mapping[str, Any]) -> dict[str,
 
 async def async_connect_powerwall(
     hass: HomeAssistant, conn_type: str, data: Mapping[str, Any]
-) -> pypowerwall.Powerwall | aiopowerwall.PowerwallClient | aiopowerwall.PowerwallEnergySite :
+) -> pypowerwall.Powerwall | aiopowerwall.PowerwallClient | aiopowerwall.PowerwallEnergySite:
     """Create and connect a Powerwall client in the executor, raising on failure."""
 
     def _connect() -> pypowerwall.Powerwall | aiopowerwall.PowerwallClient | aiopowerwall.PowerwallEnergySite:
