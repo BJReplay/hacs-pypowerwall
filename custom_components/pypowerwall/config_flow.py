@@ -11,6 +11,7 @@ import voluptuous as vol
 from homeassistant.config_entries import ConfigEntry, ConfigFlow, ConfigFlowResult, OptionsFlow
 from homeassistant.const import CONF_EMAIL, CONF_HOST, CONF_PASSWORD
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.selector import NumberSelector, NumberSelectorConfig, NumberSelectorMode
 
 import pypowerwall
@@ -147,10 +148,14 @@ class MissingPasswordError(Exception):
     """Raised when a v1r entry supplies neither the gateway nor the customer password."""
 
 
-def _connect_and_get_info(conn_type: str, data: dict[str, Any]) -> tuple[str, str | None]:
+def _connect_and_get_info(
+    hass: HomeAssistant, conn_type: str, data: dict[str, Any]
+) -> tuple[str, str | None]:
     """Connect to the gateway and return (din, site_name), raising on any failure."""
     if conn_type == CONN_TYPE_TEDAPI_AIO:
-        pw = aiopowerwall.PowerwallClient(**build_powerwall_kwargs(conn_type, data))
+        pw = aiopowerwall.PowerwallClient(
+            **build_powerwall_kwargs(conn_type, data), session=async_get_clientsession(hass)
+        )
         if not pw.connect():
             raise PowerwallConnectionError(f"Unable to connect to Powerwall ({conn_type} mode)")
     else:
@@ -188,7 +193,7 @@ async def _validate_input(
     if conn_type == CONN_TYPE_TEDAPI_V1R and not (data.get(CONF_GW_PWD) or data.get(CONF_PASSWORD)):
         raise MissingPasswordError
     await hass.async_add_executor_job(_check_auth_cache, conn_type, data)
-    return await hass.async_add_executor_job(_connect_and_get_info, conn_type, data)
+    return await hass.async_add_executor_job(_connect_and_get_info, hass, conn_type, data)
 
 
 class PypowerwallConfigFlow(ConfigFlow, domain=DOMAIN):
