@@ -147,16 +147,14 @@ class MissingPasswordError(Exception):
     """Raised when a v1r entry supplies neither the gateway nor the customer password."""
 
 
-async def _connect_and_get_info(conn_type: str, data: dict[str, Any]) -> tuple[str, str | None]:
+def _connect_and_get_info(conn_type: str, data: dict[str, Any]) -> tuple[str, str | None]:
     """Connect to the gateway and return (din, site_name), raising on any failure."""
     if conn_type == CONN_TYPE_TEDAPI_AIO:
-        async with aiopowerwall.PowerwallClient(**build_powerwall_kwargs(conn_type, data)) as pw:
-            await pw.connect()
+        pw = aiopowerwall.PowerwallClient(**build_powerwall_kwargs(conn_type, data))
         if not pw.connect():            
             raise PowerwallConnectionError(f"Unable to connect to Powerwall ({conn_type} mode)")
     else:
-        async with pypowerwall.Powerwall(**build_powerwall_kwargs(conn_type, data)) as pw:
-            await pw.is_connected()
+        pw = pypowerwall.Powerwall(**build_powerwall_kwargs(conn_type, data))
         if not pw.is_connected(): 
             raise PowerwallConnectionError(f"Unable to connect to Powerwall ({conn_type} mode)")
     din = pw.din()
