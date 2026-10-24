@@ -6,6 +6,7 @@ import logging
 import os
 from typing import Any
 
+import aiopowerwall
 import voluptuous as vol
 from homeassistant.config_entries import ConfigEntry, ConfigFlow, ConfigFlowResult, OptionsFlow
 from homeassistant.const import CONF_EMAIL, CONF_HOST, CONF_PASSWORD
@@ -148,7 +149,11 @@ class MissingPasswordError(Exception):
 
 def _connect_and_get_info(conn_type: str, data: dict[str, Any]) -> tuple[str, str | None]:
     """Connect to the gateway and return (din, site_name), raising on any failure."""
-    pw = pypowerwall.Powerwall(**build_powerwall_kwargs(conn_type, data))
+    if conn_type == CONN_TYPE_TEDAPI_AIO:
+        pw = aiopowerwall.PowerwallClient(**build_powerwall_kwargs(conn_type, data))
+        pw.connect()
+    else:
+        pw = pypowerwall.Powerwall(**build_powerwall_kwargs(conn_type, data))
     if not pw.is_connected():
         raise PowerwallConnectionError(f"Unable to connect to Powerwall ({conn_type} mode)")
     din = pw.din()
